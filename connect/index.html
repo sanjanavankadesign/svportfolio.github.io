@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect — AI Talent Pipeline SaaS Platform</title>
+    <meta name="description" content="Connect - Elite AI-powered candidate sourcing, parsing, matching and automated outreach platform.">
+
+    <!-- Fonts: Plus Jakarta Sans & DM Serif Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"DM Serif Display"', 'serif'],
+                        mono: ['"Space Grotesk"', 'monospace'],
+                    },
+                    colors: {
+                        connectNavy: '#1e1b4b',
+                        connectPurple: '#2e2a5c',
+                        connectBlue: '#2563eb',
+                        connectLightBg: '#f8fafc',
+                        connectCardBg: '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+
+        <!-- Google Material Design Icons (Material Symbols) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- App Styles -->
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="h-full bg-[#f4f6fb] dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased flex flex-col overflow-x-hidden selection:bg-blue-500 selection:text-white">
+
+    <!-- Shell Container -->
+    <div class="min-h-screen flex flex-col md:flex-row flex-1">
+
+        <!-- ========================================== -->
+        <!-- LEFT SIDEBAR                               -->
+        <!-- ========================================== -->
+        <aside class="w-full md:w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col justify-between shrink-0 shadow-sm z-30">
+            <div>
+                <!-- Brand Top Bar -->
+                <div class="h-16 px-5 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+                    <button onclick="switchView('dashboard')" class="flex items-center gap-2.5 group">
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white font-serif font-bold text-lg flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
+                            C
+                        </div>
+                        <span class="font-sans font-bold text-xl tracking-tight text-slate-900 dark:text-white">Connect</span>
+                    </button>
+
+                    <button type="button" aria-label="Toggle Sidebar" class="w-7 h-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors">
+                        <span class="material-symbols-outlined w-4 h-4">chevron_left</span>
+                    </button>
+                </div>
+
+                <!-- Global Search -->
+                <div class="p-4 border-b border-slate-100 dark:border-slate-800">
+                    <div class="relative">
+                        <span class="material-symbols-outlined w-4 h-4 absolute left-3 top-2.5 text-slate-400">search</span>
+                        <input id="sidebar-search" type="text" placeholder="Search everything" class="w-full pl-9 pr-7 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-xs text-slate-700 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+                        <span class="absolute right-2.5 top-2 text-[10px] text-slate-400 border border-slate-300 dark:border-slate-700 rounded px-1 font-mono">/</span>
+                    </div>
+                </div>
+
+                <!-- Navigation List -->
+                <div class="p-3 space-y-6">
+                    <div>
+                        <div class="px-3 mb-2 text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Navigation</div>
+                        <nav class="space-y-1 text-xs font-semibold">
+                            <button onclick="switchView('dashboard')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined w-4 h-4 text-slate-500">grid_view</span>
+                                <span>Dashboard</span>
+                            </button>
+                            <button onclick="showToast('Reports coming soon')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined w-4 h-4 text-slate-500">bar_chart</span>
+                                <span>Reports</span>
+                            </button>
+                            <button onclick="showToast('Segments view selected')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                                <span class="material-symbols-outlined w-4 h-4 text-slate-500">group</span>
+                                <span>Segments</span>
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Jobs Section -->
+                    <div>
+                        <div class="px-3 mb-2 flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">Jobs</span>
+                            <div class="flex items-center gap-1.5 text-slate-400">
+                                <button type="button" aria-label="Search jobs"><span class="material-symbols-outlined w-3.5 h-3.5 hover:text-slate-600">search</span></button>
+                                <button type="button" onclick="startJobCreation()" aria-label="Create job"><span class="material-symbols-outlined w-3.5 h-3.5 hover:text-slate-600">add</span></button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1 text-xs font-semibold">
+                            <button onclick="switchView('outreachAll')" class="job-sidebar-item w-full flex items-center justify-between px-3 py-2 rounded-lg bg-blue-50 dark:bg-slate-800/80 text-blue-700 dark:text-blue-400 font-bold border-l-2 border-blue-600">
+                                <div class="flex items-center gap-2 truncate">
+                                    <span class="w-2 h-2 rounded-full bg-blue-600 shrink-0"></span>
+                                    <span class="truncate">Senior React Developer</span>
+                                </div>
+                                <span class="text-[10px] text-blue-600 font-mono font-bold">0</span>
+                            </button>
+
+                            <button onclick="switchView('outreachAll')" class="job-sidebar-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                <div class="flex items-center gap-2 truncate">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+                                    <span class="truncate">Senior React Developer</span>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono">124</span>
+                            </button>
+
+                            <button onclick="showToast('Senior Product Manager role selected')" class="job-sidebar-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                <div class="flex items-center gap-2 truncate">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+                                    <span class="truncate">Senior Product Manager</span>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono">89</span>
+                            </button>
+
+                            <button onclick="showToast('UX Designer role selected')" class="job-sidebar-item w-full flex items-center justify-between px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+                                <div class="flex items-center gap-2 truncate">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 shrink-0"></span>
+                                    <span class="truncate">UX Designer</span>
+                                </div>
+                                <span class="text-[10px] text-slate-400 font-mono">45</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Profile Bottom Bar -->
+            <div class="p-4 user-footer-bg text-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-slate-700 overflow-hidden border border-slate-600 flex items-center justify-center text-xs font-bold">
+                        JD
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold">John Doe</div>
+                        <div class="text-[10px] text-slate-400">Recruiter · Acme</div>
+                    </div>
+                </div>
+                <button type="button" onclick="showToast('Account Settings')" aria-label="Settings" class="text-slate-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined w-4 h-4">settings</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ========================================== -->
+        <!-- MAIN CONTENT CONTAINER                     -->
+        <!-- ========================================== -->
+        <main class="flex-1 flex flex-col min-w-0 bg-[#f4f6fb] dark:bg-slate-950">
+
+            <!-- Top Application Header Bar -->
+            <header class="h-16 px-6 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between shrink-0">
+                
+                <!-- Breadcrumbs / Back Title -->
+                <div class="flex items-center gap-4">
+                    <div id="breadcrumb-nav" class="hidden flex items-center gap-2 text-xs font-semibold text-slate-500">
+                        <span id="breadcrumb-text">Jobs / Create new</span>
+                    </div>
+
+                    <div id="header-title-bar" class="hidden flex items-center gap-3">
+                        <button onclick="switchView('dashboard')" class="text-slate-400 hover:text-slate-600" aria-label="Back">
+                            <span class="material-symbols-outlined w-5 h-5">chevron_left</span>
+                        </button>
+                        <div>
+                            <h1 id="header-role-title" class="font-bold text-sm text-slate-900 dark:text-white leading-none">Senior React Developer</h1>
+                            <span id="header-role-sub" class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">TEXAS (HYBRID)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Top Actions -->
+                <div class="flex items-center gap-3">
+                    <button id="top-save-draft" onclick="showToast('Draft saved successfully!')" class="hidden px-4 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-xs font-bold hover:bg-slate-50 transition-colors shadow-sm">
+                        Save draft
+                    </button>
+                </div>
+            </header>
+
+            <!-- Status Tabs Bar (Visible in Pipeline Views) -->
+            <div id="pipeline-tabs-bar" class="hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-2.5 flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs font-bold">
+                <button data-tab="all" onclick="selectTab('all')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-slate-900 text-white dark:bg-white dark:text-slate-900 flex items-center gap-1.5">
+                    <span>All</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-white dark:bg-slate-200 dark:text-slate-900 font-mono">30</span>
+                </button>
+                <button data-tab="sourced" onclick="selectTab('sourced')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    <span>Sourced</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">20</span>
+                </button>
+                <button data-tab="shortlisted" onclick="selectTab('shortlisted')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    <span>Shortlisted</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">2</span>
+                </button>
+                <button data-tab="contacted" onclick="selectTab('contacted')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    <span>Contacted</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">5</span>
+                </button>
+                <button data-tab="responded" onclick="selectTab('responded')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    <span>Responded</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">3</span>
+                </button>
+                <button data-tab="screened" onclick="selectTab('screened')" class="pipeline-tab px-3.5 py-1.5 rounded-md bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700">
+                    <span>Screened</span>
+                    <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 font-mono">2</span>
+                </button>
+            </div>
+
+            <!-- Dynamic View Contents Container -->
+            <div class="flex-1 p-6 md:p-8 overflow-y-auto max-w-6xl mx-auto w-full pb-28">
+
+                <!-- ==================================================== -->
+                <!-- VIEW 1: DASHBOARD VIEW                               -->
+                <!-- ==================================================== -->
+                <div id="view-dashboard" class="space-y-8">
+                    
+                    <!-- Dashboard Greeting Header -->
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">WEDNESDAY, MAR 20</span>
+                            <h2 class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Good morning, John</h2>
+                            <p class="text-sm text-slate-500 font-medium">Here's what's happening across your roles today.</p>
+                        </div>
+                        <button onclick="startJobCreation()" class="px-5 py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors shadow-md flex items-center gap-2 self-start sm:self-auto">
+                            <span class="material-symbols-outlined w-4 h-4">add</span>
+                            <span>Create new job</span>
+                        </button>
+                    </div>
+
+                    <!-- 4 Stat Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">ACTIVE JOBS</span>
+                                <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">3</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 dark:bg-slate-800 text-blue-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined w-6 h-6">work</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">TOTAL CANDIDATES</span>
+                                <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">1,240</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-slate-800 text-indigo-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined w-6 h-6">group</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">INTERVIEWS TODAY</span>
+                                <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">4</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-sky-50 dark:bg-slate-800 text-sky-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined w-6 h-6">calendar_today</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">SUCCESS RATE</span>
+                                <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">92%</span>
+                            </div>
+                            <div class="w-12 h-12 rounded-xl bg-emerald-50 dark:bg-slate-800 text-emerald-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined w-6 h-6">track_changes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline & Activity Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="font-bold text-lg text-slate-900 dark:text-white">Active job pipeline</h3>
+                                <button onclick="switchView('outreachAll')" class="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                                    <span>View all jobs</span>
+                                    <span class="material-symbols-outlined w-3.5 h-3.5">chevron_right</span>
+                                </button>
+                            </div>
+
+                            <div class="space-y-3">
+                                <div onclick="switchView('outreachAll')" class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-300 transition-colors cursor-pointer flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Senior React Developer</h4>
+                                        <p class="text-xs text-slate-400 font-medium">Stripe · LA (Hybrid)</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-mono text-xl font-bold text-slate-900 dark:text-white">124</span>
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">CANDIDATES</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="switchView('outreachAll')" class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-300 transition-colors cursor-pointer flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Senior Product Manager</h4>
+                                        <p class="text-xs text-slate-400 font-medium">Growth · Remote (US)</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-mono text-xl font-bold text-slate-900 dark:text-white">89</span>
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">CANDIDATES</span>
+                                    </div>
+                                </div>
+
+                                <div onclick="switchView('outreachAll')" class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-300 transition-colors cursor-pointer flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-bold text-slate-900 dark:text-white text-base">Industrial Designer</h4>
+                                        <p class="text-xs text-slate-400 font-medium">Frog Design · Germany</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-mono text-xl font-bold text-slate-900 dark:text-white">45</span>
+                                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">CANDIDATES</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Recent activity</h3>
+
+                            <div class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined w-4 h-4">check</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-slate-800 dark:text-slate-200">Sarah Jenkins moved to Technical Interview</p>
+                                        <span class="text-[10px] text-slate-400">2m ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined w-4 h-4">schedule</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-slate-800 dark:text-slate-200">Drafted JD for Cloud Architect</p>
+                                        <span class="text-[10px] text-slate-400">1h ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined w-4 h-4">add</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-slate-800 dark:text-slate-200">Added 12 candidates from Export_CV.csv</p>
+                                        <span class="text-[10px] text-slate-400">3h ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-3">
+                                    <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 mt-0.5">
+                                        <span class="material-symbols-outlined w-4 h-4">auto_awesome</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-semibold text-slate-800 dark:text-slate-200">AI surfaced 4 strong matches for Senior PM</p>
+                                        <span class="text-[10px] text-slate-400">5h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 2: DESCRIBE THE ROLE (BRIEF PROMPT)             -->
+                <!-- ==================================================== -->
+                <div id="view-brief" class="hidden max-w-2xl mx-auto text-center space-y-8 pt-8">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">LET'S CREATE A NEW JOB</span>
+                        <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white">
+                            Describe the role <span class="italic text-blue-600 font-serif">you're hiring for</span>
+                        </h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 font-medium max-w-lg mx-auto mt-3 leading-relaxed">
+                            Write a short brief, paste an existing JD, or dictate. Connect will draft structured criteria, screening questions, and a sourcing plan.
+                        </p>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200 dark:border-slate-800 shadow-lg text-left space-y-4">
+                        <textarea id="brief-textarea" rows="4" placeholder="e.g. Senior React Developer with 6+ years shipping design-forward product..." class="w-full bg-transparent text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none text-base resize-none font-medium"></textarea>
+                        
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-2 text-slate-400">
+                                <button type="button" onclick="showToast('Attach file clicked')" class="p-2 hover:bg-slate-100 rounded-lg"><span class="material-symbols-outlined w-4 h-4">attach_file</span></button>
+                                <button type="button" onclick="showToast('Voice dictation active')" class="p-2 hover:bg-slate-100 rounded-lg"><span class="material-symbols-outlined w-4 h-4">mic</span></button>
+                            </div>
+
+                            <button onclick="submitRoleBrief()" class="px-6 py-2.5 bg-blue-600 text-white font-bold rounded-xl text-sm hover:bg-blue-700 transition-colors shadow-md flex items-center gap-2">
+                                <span>Generate JD & Search</span>
+                                <span class="material-symbols-outlined w-4 h-4">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-4">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">OR START WITH A QUICK ACTION</span>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <button onclick="startJobCreation('Senior React Developer with 8+ years experience in Bangalore')" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-blue-500 transition-colors shadow-sm">
+                                Screen Candidates
+                            </button>
+                            <button onclick="startJobCreation('Product Manager for Growth team remote US')" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-blue-500 transition-colors shadow-sm">
+                                Add Candidates and Start Outreach
+                            </button>
+                            <button onclick="startJobCreation('Create a Senior Software Developer JD with React 18, TypeScript, Next.js')" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 hover:border-blue-500 transition-colors shadow-sm">
+                                Create a Senior Software Developer JD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 3: AI ASSISTANT & JD EXTRACTION                 -->
+                <!-- ==================================================== -->
+                <div id="view-ai-jd" class="hidden max-w-3xl mx-auto space-y-6">
+                    <div class="space-y-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider">
+                            <span class="material-symbols-outlined w-3 h-3">auto_awesome</span>
+                            AI ASSISTANT
+                        </span>
+                        <div class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-sm text-slate-700 dark:text-slate-300 font-medium">
+                            Welcome to Connect. I'm ready to help you build your elite talent pipeline. Let's start by defining the role you're looking to fill.
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end">
+                        <div class="px-5 py-3 bg-[#1e1b4b] text-white rounded-2xl text-sm font-semibold max-w-sm shadow-md">
+                            <span id="ai-user-prompt-text">create a test role</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md overflow-hidden">
+                        <div class="px-6 py-3 bg-emerald-50 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-xs font-bold font-mono text-emerald-900 dark:text-emerald-300 uppercase tracking-widest">JOB DESCRIPTION</span>
+                            <button type="button" onclick="showToast('Edit fields activated')" class="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-blue-600 flex items-center gap-1">
+                                <span class="material-symbols-outlined w-3.5 h-3.5">edit</span>
+                                <span>Edit</span>
+                            </button>
+                        </div>
+
+                        <div class="p-6 space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">TARGET ROLE</span>
+                                    <span id="ai-jd-target-role" class="font-serif text-xl font-bold text-slate-900 dark:text-white">Senior React Developer</span>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">MIN. EXPERIENCE</span>
+                                    <span class="font-serif text-xl font-bold text-slate-900 dark:text-white">8+ Years</span>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">LOCATION</span>
+                                    <span class="font-bold text-slate-900 dark:text-white text-base">Bangalore (Hybrid)</span>
+                                </div>
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">CORE STACK</span>
+                                    <div id="stack-tags-container" class="flex flex-wrap gap-2 items-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="confirmIngestion()" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl text-base shadow-lg transition-colors flex items-center justify-center gap-2">
+                        <span>Confirm & initialize ingestion</span>
+                        <span class="material-symbols-outlined w-5 h-5">arrow_forward</span>
+                    </button>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 4: BATCH INGESTION SPINNER                       -->
+                <!-- ==================================================== -->
+                <div id="view-ingestion" class="hidden max-w-lg mx-auto text-center space-y-8 py-12">
+                    <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+                        <svg class="w-28 h-28 animate-spin-segmented" viewBox="0 0 100 100">
+                            <circle class="spinner-track" cx="50" cy="50" r="40" fill="none" stroke-width="8"/>
+                            <circle class="spinner-segment" cx="50" cy="50" r="40" fill="none" stroke-width="8" stroke-dasharray="60 40"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h2 class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">Mapping to job description...</h2>
+                        <p class="text-xs font-bold font-mono text-slate-400 uppercase tracking-widest mt-2">
+                            BATCH INGESTION IN PROGRESS · <span id="ingestion-percent" class="text-blue-600">92%</span>
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 max-w-xs mx-auto">
+                        <div class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                            <div class="font-mono text-2xl font-bold text-slate-900 dark:text-white">102</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">FILES FOUND</div>
+                        </div>
+                        <div class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+                            <div id="ingestion-processing-count" class="font-mono text-2xl font-bold text-slate-900 dark:text-white">93</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mt-1">PROCESSING</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 5: CANDIDATES SCORED & RESOLUTIONS               -->
+                <!-- ==================================================== -->
+                <div id="view-resolutions" class="hidden max-w-3xl mx-auto space-y-6">
+                    <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md p-8 space-y-6">
+                        <div>
+                            <h2 class="font-serif text-2xl font-extrabold text-slate-900 dark:text-white">Candidates Scored and Added to Database</h2>
+                            <p class="text-xs text-slate-500 font-medium mt-1">
+                                Auto-parsing complete. <span class="text-red-500 font-bold">3 issues detected.</span>
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch">
+                            <div class="md:col-span-2 border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:border-blue-500 transition-colors bg-slate-50/50 dark:bg-slate-800/30">
+                                <div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 mb-3">
+                                    <span class="material-symbols-outlined w-5 h-5">add</span>
+                                </div>
+                                <span class="font-bold text-slate-900 dark:text-white text-sm">Add more data</span>
+                                <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider mt-1">DROP CSV, FOLDER OR TEXT</span>
+                            </div>
+
+                            <div class="md:col-span-3 space-y-3">
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">PENDING RESOLUTIONS</span>
+
+                                <div class="p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between hover:border-red-400 transition-colors cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined w-4 h-4">warning</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Low-quality parser output</h4>
+                                            <p class="text-[10px] text-slate-400">3 resumes corrupted</p>
+                                        </div>
+                                    </div>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">arrow_forward</span>
+                                </div>
+
+                                <div class="p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between hover:border-amber-400 transition-colors cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined w-4 h-4">group</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Duplicate detected: Arjun Mehta</h4>
+                                            <p class="text-[10px] text-slate-400">Across Candidate Database</p>
+                                        </div>
+                                    </div>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">arrow_forward</span>
+                                </div>
+
+                                <div class="p-3.5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-center justify-between hover:border-amber-400 transition-colors cursor-pointer">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                                            <span class="material-symbols-outlined w-4 h-4">location_on</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Mismatched geolocation</h4>
+                                            <p class="text-[10px] text-slate-400">Sneha Rao (Remote / Pune)</p>
+                                        </div>
+                                    </div>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">arrow_forward</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="applyResolutions()" class="w-full py-3.5 bg-[#1e1b4b] hover:bg-slate-900 text-white font-bold rounded-xl text-sm transition-colors flex items-center justify-center gap-2 shadow-md">
+                            <span>Apply resolutions & launch search</span>
+                            <span class="material-symbols-outlined w-4 h-4">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 6: AI MATCH ANALYSIS & OUTREACH (ALL TAB)       -->
+                <!-- ==================================================== -->
+                <div id="view-outreach-all" class="hidden space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                        <div class="lg:col-span-1 ai-panel-bg text-white rounded-3xl p-4 space-y-4 shadow-md">
+                            <div class="flex items-center justify-between px-2">
+                                <span class="text-xs font-bold font-mono tracking-wider text-blue-300">• AI ASSISTANT</span>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase">ALL (i)</span>
+                            </div>
+
+                            <div class="space-y-1.5 overflow-y-auto max-h-[500px] pr-1">
+                                <div class="p-2.5 rounded-xl bg-indigo-900/60 flex items-center justify-between border border-indigo-700/50 cursor-pointer" onclick="openCandidateDetail('Priya Krishnan')">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">PK</div>
+                                        <div>
+                                            <div class="text-xs font-bold">Priya Krishnan</div>
+                                            <div class="text-[10px] text-slate-300">7 yrs · Bangalore</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-emerald-400">96%</span>
+                                </div>
+
+                                <div class="p-2.5 rounded-xl hover:bg-white/5 flex items-center justify-between transition-colors cursor-pointer" onclick="openCandidateDetail('Rahul Varma')">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-600/70 text-white font-bold text-xs flex items-center justify-center">RV</div>
+                                        <div>
+                                            <div class="text-xs font-bold">Rahul Varma</div>
+                                            <div class="text-[10px] text-slate-400">11 yrs · Bangalore</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-emerald-400">95%</span>
+                                </div>
+
+                                <div class="p-2.5 rounded-xl hover:bg-white/5 flex items-center justify-between transition-colors cursor-pointer" onclick="openCandidateDetail('Vikram Malhotra')">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-600/70 text-white font-bold text-xs flex items-center justify-center">VM</div>
+                                        <div>
+                                            <div class="text-xs font-bold">Vikram Malhotra</div>
+                                            <div class="text-[10px] text-slate-400">12 yrs · Gurgaon</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-xs font-mono font-bold text-emerald-400">94%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-3 space-y-6">
+                            <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                                <h3 class="text-sm font-medium text-slate-700 dark:text-slate-300">
+                                    I've analyzed <strong class="text-slate-900 dark:text-white font-bold">30 candidates</strong> and found <strong class="text-slate-900 dark:text-white font-bold">4 strong matches</strong>:
+                                </h3>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div onclick="openCandidateDetail('Priya Krishnan')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-between border border-slate-100 dark:border-slate-700 cursor-pointer hover:border-blue-400 transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">PK</div>
+                                            <div>
+                                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Priya Krishnan</h4>
+                                                <p class="text-[10px] text-slate-500">Sr Frontend Engineer at Flipkart</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-mono font-bold text-emerald-600">96%</span>
+                                    </div>
+
+                                    <div onclick="openCandidateDetail('Rahul Varma')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-between border border-slate-100 dark:border-slate-700 cursor-pointer hover:border-blue-400 transition-colors">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">RV</div>
+                                            <div>
+                                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Rahul Varma</h4>
+                                                <p class="text-[10px] text-slate-500">Lead Developer at Grab</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-xs font-mono font-bold text-emerald-600">95%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3">
+                                <span class="text-xs font-medium text-slate-500">How would you like to start outreach?</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <button onclick="showToast('Initiating Bulk Voice Calls to 4 top matches...')" class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between hover:border-blue-500 transition-colors text-left">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+                                                <span class="material-symbols-outlined w-5 h-5">call</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Bulk Call Candidates</h4>
+                                                <p class="text-[10px] text-slate-400">Autodial sequence with voicemail drop</p>
+                                            </div>
+                                        </div>
+                                        <span class="material-symbols-outlined w-4 h-4 text-slate-400">arrow_forward</span>
+                                    </button>
+
+                                    <button onclick="showToast('Scheduling Bulk AI Screening Interviews...')" class="p-4 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between hover:border-blue-500 transition-colors text-left">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-9 h-9 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                                                <span class="material-symbols-outlined w-5 h-5">smart_toy</span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Bulk AI Call</h4>
+                                                <p class="text-[10px] text-slate-400">AI runs the screening call...</p>
+                                            </div>
+                                        </div>
+                                        <span class="material-symbols-outlined w-4 h-4 text-slate-400">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 7: SOURCED CANDIDATES GRID (SOURCED 20 TAB)     -->
+                <!-- ==================================================== -->
+                <div id="view-sourced-grid" class="hidden space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-serif text-2xl font-extrabold text-slate-900 dark:text-white">Sourced candidates</h2>
+                            <p class="text-xs text-slate-400 font-medium">20 profiles matched against your strategy. AI-ranked by relevance.</p>
+                        </div>
+                        <button onclick="showToast('Filter modal opened')" class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-2 shadow-sm">
+                            <span class="material-symbols-outlined w-4 h-4">filter_alt</span>
+                            <span>Filter</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div onclick="openCandidateDetail('Sanjay Verma')" class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 cursor-pointer hover:border-blue-400 transition-colors">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">SV</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Sanjay Verma</h4>
+                                        <span class="text-[10px] text-slate-400">7 yrs · Pune</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-blue-600">76% MATCH</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 font-medium">AI-matched on stack and seniority signals.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">REACT</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">TYPESCRIPT</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">TAILWIND</span>
+                            </div>
+                        </div>
+
+                        <div onclick="openCandidateDetail('Ishita Gupta')" class="p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3 cursor-pointer hover:border-blue-400 transition-colors">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">IG</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Ishita Gupta</h4>
+                                        <span class="text-[10px] text-slate-400">4 yrs · Bangalore</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-blue-600">76% MATCH</span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 font-medium">AI-matched on stack and seniority signals.</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">REACT</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">TYPESCRIPT</span>
+                                <span class="px-2 py-0.5 rounded text-[9px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">TAILWIND</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 8: SHORTLISTED CANDIDATES                       -->
+                <!-- ==================================================== -->
+                <div id="view-shortlisted" class="hidden space-y-6 max-w-3xl mx-auto">
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="text-sm font-medium text-slate-700 dark:text-slate-300">Shortlisted candidates ready for final stage:</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div onclick="openCandidateDetail('Priya Krishnan')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-between border border-slate-100 dark:border-slate-700 cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">PK</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Priya Krishnan</h4>
+                                        <p class="text-[10px] text-slate-500">7 yrs · Bangalore</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-emerald-600">96%</span>
+                            </div>
+
+                            <div onclick="openCandidateDetail('Arjun Mehta')" class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-between border border-slate-100 dark:border-slate-700 cursor-pointer">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">AM</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Arjun Mehta</h4>
+                                        <p class="text-[10px] text-slate-500">9 yrs · Mumbai</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-emerald-600">91%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 9: CONTACTED PIPELINE (ENGAGEMENT OVERVIEW)     -->
+                <!-- ==================================================== -->
+                <div id="view-contacted" class="hidden space-y-6 max-w-4xl mx-auto">
+                    <div>
+                        <h2 class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">Engagement overview</h2>
+                        <p class="text-xs text-slate-400 font-medium">8 candidates in your outreach pipeline.</p>
+                    </div>
+
+                    <!-- 3 Engagement Stat Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                            <div class="font-mono text-3xl font-extrabold text-slate-900 dark:text-white">3</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">REPLIED</div>
+                            <button onclick="selectTab('responded')" class="w-full py-2 bg-emerald-50 text-emerald-700 font-bold text-xs rounded-xl border border-emerald-200 hover:bg-emerald-100 transition-colors uppercase tracking-wider">
+                                VIEW
+                            </button>
+                        </div>
+
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                            <div class="font-mono text-3xl font-extrabold text-slate-900 dark:text-white">2</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">AWAITING RESPONSE</div>
+                            <button onclick="showToast('Follow up sequence dispatched')" class="w-full py-2 bg-amber-50 text-amber-700 font-bold text-xs rounded-xl border border-amber-200 hover:bg-amber-100 transition-colors uppercase tracking-wider">
+                                FOLLOW UP
+                            </button>
+                        </div>
+
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-3">
+                            <div class="font-mono text-3xl font-extrabold text-slate-900 dark:text-white">1</div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">NO RESPONSES</div>
+                            <button onclick="showToast('Re-engagement sequence started')" class="w-full py-2 bg-red-50 text-red-700 font-bold text-xs rounded-xl border border-red-200 hover:bg-red-100 transition-colors uppercase tracking-wider">
+                                RE-ENGAGE
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity List -->
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                        <h3 class="font-bold text-sm text-slate-900 dark:text-white">Recent activity</h3>
+
+                        <div class="divide-y divide-slate-100 dark:divide-slate-800">
+                            <div onclick="openCandidateDetail('Priya Krishnan')" class="py-3.5 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 px-2 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">PK</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Priya Krishnan</h4>
+                                        <span class="text-[10px] text-slate-400">via Call · Just now</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 text-slate-600">• PASSIVE</span>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">chat_bubble</span>
+                                </div>
+                            </div>
+
+                            <div onclick="openCandidateDetail('Vikram Malhotra')" class="py-3.5 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 px-2 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">VM</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Vikram Malhotra</h4>
+                                        <span class="text-[10px] text-slate-400">via Email · 2 days ago</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-100 text-emerald-700">• ACTIVE</span>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">chat_bubble</span>
+                                </div>
+                            </div>
+
+                            <div onclick="openCandidateDetail('Anjali Sharma')" class="py-3.5 flex items-center justify-between cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 px-2 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">AS</div>
+                                    <div>
+                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Anjali Sharma</h4>
+                                        <span class="text-[10px] text-slate-400">via Call · 4 days ago</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-100 text-emerald-700">• ACTIVE</span>
+                                    <span class="material-symbols-outlined w-4 h-4 text-slate-400">chat_bubble</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 10: RESPONDED PIPELINE (TRIAGE INCOMING MESSAGES)-->
+                <!-- ==================================================== -->
+                <div id="view-responded" class="hidden space-y-6 max-w-4xl mx-auto">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">Candidate responses</h2>
+                            <p class="text-xs text-slate-400 font-medium">Review and triage incoming messages</p>
+                        </div>
+                        <div class="flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-1 rounded-xl text-[10px] font-bold">
+                            <button class="px-3 py-1 bg-blue-600 text-white rounded-lg">ALL</button>
+                            <button class="px-3 py-1 text-slate-600 dark:text-slate-400 hover:text-slate-900">EMAIL</button>
+                            <button class="px-3 py-1 text-slate-600 dark:text-slate-400 hover:text-slate-900">SMS</button>
+                            <button class="px-3 py-1 text-slate-600 dark:text-slate-400 hover:text-slate-900">CALL</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Candidate Response Item 1 -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">RV</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Rahul Varma</h4>
+                                        <p class="text-[10px] text-slate-400">Grab · New York</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] font-bold font-mono text-slate-400 uppercase">RESPONDED 5M AGO</span>
+                                    <div class="text-[10px] text-blue-600 font-semibold">via Email</div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700 text-xs italic text-slate-700 dark:text-slate-300">
+                                "*The role looks perfect. I'd love to discuss the architecting phase of your new React dashboard.*"
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <button onclick="selectTab('screened')" class="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-1.5 shadow-sm">
+                                    <span>Move to screening</span>
+                                    <span class="material-symbols-outlined w-3.5 h-3.5">arrow_forward</span>
+                                </button>
+                                <button onclick="openCandidateDetail('Rahul Varma')" class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5">
+                                    <span>Reply</span>
+                                    <span class="material-symbols-outlined w-3.5 h-3.5">chat_bubble</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Candidate Response Item 2 -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-indigo-600 text-white font-bold text-xs flex items-center justify-center">MK</div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Meena K</h4>
+                                        <p class="text-[10px] text-slate-400">InMobi · New York</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] font-bold font-mono text-slate-400 uppercase">RESPONDED 1H AGO</span>
+                                    <div class="text-[10px] text-blue-600 font-semibold">via Call</div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-100 dark:border-slate-700 text-xs italic text-slate-700 dark:text-slate-300">
+                                "*Yes, let's connect. I'm free tomorrow after 4 PM for a quick call.*"
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <button onclick="selectTab('screened')" class="px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl hover:bg-blue-700 transition-colors flex items-center gap-1.5 shadow-sm">
+                                    <span>Move to screening</span>
+                                    <span class="material-symbols-outlined w-3.5 h-3.5">arrow_forward</span>
+                                </button>
+                                <button onclick="openCandidateDetail('Meena K')" class="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 rounded-xl hover:bg-slate-50 transition-colors flex items-center gap-1.5">
+                                    <span>Reply</span>
+                                    <span class="material-symbols-outlined w-3.5 h-3.5">chat_bubble</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 11: SCREENED PIPELINE (SCORECARDS)               -->
+                <!-- ==================================================== -->
+                <div id="view-screened" class="hidden space-y-6 max-w-4xl mx-auto">
+                    <div>
+                        <h2 class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">Screened Candidates</h2>
+                        <p class="text-xs text-slate-400 font-medium">AI-synthesized screening results and performance metrics</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Scorecard 1: Divya Reddy -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-indigo-950 text-white font-bold text-sm flex items-center justify-center">DR</div>
+                                    <div>
+                                        <h3 class="font-bold text-base text-slate-900 dark:text-white">Divya Reddy</h3>
+                                        <p class="text-xs text-slate-400">Senior UI Developer · Salesforce</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] font-bold font-mono text-blue-600 uppercase block mb-1">SCREENING SCORE</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">90<span class="text-sm font-sans text-slate-400">/100</span></span>
+                                        <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wider">HIGH FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                <!-- Technical Depth Bars -->
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-3">TECHNICAL DEPTH</span>
+                                    <div class="space-y-3 text-xs font-semibold">
+                                        <div>
+                                            <div class="flex justify-between mb-1 text-slate-700 dark:text-slate-300">
+                                                <span>Cloud architecture</span>
+                                                <span class="font-mono text-blue-600">92%</span>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-600 h-1.5 rounded-full" style="width: 92%"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-1 text-slate-700 dark:text-slate-300">
+                                                <span>Event-driven systems</span>
+                                                <span class="font-mono text-blue-600">88%</span>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-600 h-1.5 rounded-full" style="width: 88%"></div></div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-1 text-slate-700 dark:text-slate-300">
+                                                <span>Scalability</span>
+                                                <span class="font-mono text-blue-600">95%</span>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-600 h-1.5 rounded-full" style="width: 95%"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Key Findings -->
+                                <div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-3">KEY FINDINGS</span>
+                                    <ul class="space-y-2 text-xs font-semibold text-slate-700 dark:text-slate-300">
+                                        <li class="flex items-center gap-2"><span class="material-symbols-outlined w-4 h-4 text-emerald-500">check</span> Led migration for 10M+ users</li>
+                                        <li class="flex items-center gap-2"><span class="material-symbols-outlined w-4 h-4 text-emerald-500">check</span> Expertise in Kafka & K8s</li>
+                                        <li class="flex items-center gap-2"><span class="material-symbols-outlined w-4 h-4 text-emerald-500">check</span> Strong mentor for junior devs</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Engagement Signal & Action -->
+                                <div class="space-y-3">
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">ENGAGEMENT SIGNAL</span>
+                                    <div class="p-3 bg-slate-50 dark:bg-slate-800 rounded-xl text-xs italic text-slate-600 dark:text-slate-300 border border-slate-100 dark:border-slate-700">
+                                        "*Strong intent to transition in 4 weeks.*"
+                                        <span class="block text-[9px] font-mono font-bold text-slate-400 uppercase mt-1">RECORDED VIA CALL SUMMARY</span>
+                                    </div>
+                                    <button onclick="showToast('Candidate submitted to client portfolio!')" class="w-full py-2.5 bg-[#1e1b4b] text-white rounded-xl text-xs font-bold hover:bg-slate-900 transition-colors flex items-center justify-center gap-2 shadow-sm">
+                                        <span>Submit to client</span>
+                                        <span class="material-symbols-outlined w-4 h-4">description</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scorecard 2: Manoj Gupta -->
+                        <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-md space-y-6">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 rounded-2xl bg-indigo-950 text-white font-bold text-sm flex items-center justify-center">MG</div>
+                                    <div>
+                                        <h3 class="font-bold text-base text-slate-900 dark:text-white">Manoj Gupta</h3>
+                                        <p class="text-xs text-slate-400">Full Stack Dev · Oracle</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[10px] font-bold font-mono text-blue-600 uppercase block mb-1">SCREENING SCORE</span>
+                                    <div class="flex items-center gap-2">
+                                        <span class="font-serif text-3xl font-extrabold text-slate-900 dark:text-white">94<span class="text-sm font-sans text-slate-400">/100</span></span>
+                                        <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wider">HIGH FIT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================================================== -->
+                <!-- VIEW 12: CANDIDATE DETAIL & MESSAGING WORKSPACE      -->
+                <!-- ==================================================== -->
+                <div id="view-candidate-detail" class="hidden space-y-6 max-w-5xl mx-auto">
+                    <div class="flex items-center justify-between">
+                        <button onclick="switchView('outreachAll')" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined w-4 h-4">chevron_left</span>
+                            <span>Back to list</span>
+                        </button>
+                    </div>
+
+                    <!-- Header Profile Card -->
+                    <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-indigo-950 text-white font-bold text-sm flex items-center justify-center">SV</div>
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 id="detail-candidate-name" class="font-serif text-2xl font-extrabold text-slate-900 dark:text-white">Sanjay Verma</h2>
+                                    <span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider rounded">SCREENING</span>
+                                </div>
+                                <p class="text-xs text-slate-400 font-medium">Frontend / Full-stack · PayPal · New York</p>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[10px] font-bold font-mono text-slate-400 uppercase">MATCH SCORE</span>
+                            <span class="font-mono text-2xl font-bold text-blue-600 block">76%</span>
+                        </div>
+                    </div>
+
+                    <!-- Messaging Thread & Quick Actions Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Left 2 Cols: Conversation & Messaging Box -->
+                        <div class="lg:col-span-2 space-y-4">
+                            <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+                                <div class="text-center">
+                                    <span class="text-[10px] font-bold font-mono text-slate-400 uppercase tracking-widest">TODAY, 10:42 AM</span>
+                                </div>
+
+                                <!-- Outgoing Message Bubble -->
+                                <div class="p-5 bg-[#1e1b4b] text-white rounded-2xl text-xs leading-relaxed space-y-2">
+                                    <p>Hi Sanjay, this is Sanjana from TechCorp. I saw your profile and your experience with React is exactly what we're looking for. Would you be open to a quick chat this week?</p>
+                                    <span class="block text-[9px] font-mono text-slate-400 text-right uppercase">Sent via SMS</span>
+                                </div>
+
+                                <!-- Message Composer Box -->
+                                <div class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
+                                    <!-- Channels Switcher -->
+                                    <div class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                        <button class="px-2.5 py-1 rounded hover:bg-slate-100">EMAIL</button>
+                                        <button class="px-2.5 py-1 rounded hover:bg-slate-100">CALL</button>
+                                        <button class="px-2.5 py-1 rounded bg-slate-900 text-white">SMS</button>
+                                        <button class="px-2.5 py-1 rounded hover:bg-slate-100">AI</button>
+                                    </div>
+
+                                    <textarea id="sms-textarea" rows="3" placeholder="Type your sms..." class="w-full p-4 bg-slate-50 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 text-xs text-slate-800 dark:text-slate-100 focus:outline-none resize-none font-medium"></textarea>
+
+                                    <div class="flex items-center justify-between">
+                                        <button onclick="aiSuggestReply()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-bold hover:bg-slate-200 transition-colors flex items-center gap-1.5">
+                                            <span class="material-symbols-outlined w-3.5 h-3.5 text-blue-600">auto_awesome</span>
+                                            <span>AI suggest reply</span>
+                                        </button>
+                                        <button onclick="sendCandidateMessage()" class="px-6 py-2 bg-[#1e1b4b] text-white rounded-xl text-xs font-bold hover:bg-slate-900 transition-colors shadow-sm">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right 1 Col: Quick Actions Panel -->
+                        <div class="space-y-4">
+                            <div class="p-6 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+                                <h3 class="font-bold text-sm text-slate-900 dark:text-white">Quick Actions</h3>
+
+                                <div class="space-y-2.5 font-semibold text-xs text-slate-700 dark:text-slate-200">
+                                    <button onclick="showToast('Interview scheduler opened')" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-400 transition-colors flex items-center gap-3">
+                                        <span class="material-symbols-outlined w-4 h-4 text-blue-600">calendar_today</span>
+                                        <span>Schedule interview</span>
+                                    </button>
+
+                                    <button onclick="showToast('Screening call initialized')" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-400 transition-colors flex items-center gap-3">
+                                        <span class="material-symbols-outlined w-4 h-4 text-blue-600">call</span>
+                                        <span>Run screening call</span>
+                                    </button>
+
+                                    <button onclick="showToast('Drafting screening questions')" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-400 transition-colors flex items-center gap-3">
+                                        <span class="material-symbols-outlined w-4 h-4 text-blue-600">description</span>
+                                        <span>Draft screening questions</span>
+                                    </button>
+
+                                    <button onclick="showToast('Offer template generated')" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-400 transition-colors flex items-center gap-3">
+                                        <span class="material-symbols-outlined w-4 h-4 text-blue-600">description</span>
+                                        <span>Generate offer template</span>
+                                    </button>
+
+                                    <button onclick="showToast('Interview logger active')" class="w-full p-3.5 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 hover:border-blue-400 transition-colors flex items-center gap-3">
+                                        <span class="material-symbols-outlined w-4 h-4 text-blue-600">edit</span>
+                                        <span>Log interview notes</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ========================================== -->
+            <!-- STICKY BOTTOM COMMAND BAR                   -->
+            <!-- ========================================== -->
+            <div class="fixed bottom-4 left-0 md:left-64 right-0 px-6 z-40 flex justify-center pointer-events-none">
+                <div class="w-full max-w-xl bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-800 shadow-2xl p-1.5 flex items-center gap-3 pointer-events-auto">
+                    <button type="button" onclick="showToast('Command menu options')" class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800 transition-colors shrink-0">
+                        <span class="material-symbols-outlined w-5 h-5">add</span>
+                    </button>
+                    
+                    <input id="chat-input" type="text" placeholder="Ask Connect or run a command..." class="flex-1 bg-transparent text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:outline-none font-medium">
+
+                    <button type="button" onclick="showToast('Command sent!')" class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors shadow-md shrink-0">
+                        <span class="material-symbols-outlined w-4 h-4">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- App Script -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

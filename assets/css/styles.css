@@ -1,0 +1,360 @@
+/* Custom Styles for Sanjana Vanka Portfolio — New Palette Aesthetic */
+
+html {
+    scroll-behavior: smooth !important;
+    scroll-padding-top: 96px !important;
+}
+
+section[id], footer[id], div[id], [id] {
+    scroll-margin-top: 96px !important;
+}
+
+/* Active Navigation State & Visual Indicator */
+header nav a {
+    position: relative;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+header nav a.active {
+    color: #D81A67 !important;
+    font-weight: 800 !important;
+}
+
+header nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #D81A67;
+    border-radius: 9999px;
+    box-shadow: 0 2px 6px rgba(216, 26, 103, 0.45);
+}
+
+/* Mobile Menu Active Link State */
+#mobile-menu a.active {
+    color: #D81A67 !important;
+    font-weight: 800 !important;
+    padding-left: 0.75rem;
+    border-left: 4px solid #D81A67;
+}
+
+/* Case Study Contents Bar Active Link */
+.contents-nav a.active,
+.sticky a.active {
+    background-color: #D81A67 !important;
+    color: #ffffff !important;
+    border-radius: 9999px;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+}
+
+/* Custom Marquee Animation for Top Banner */
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 25s linear infinite;
+}
+
+/* Custom Slow Bouncing / Floating Sticky Notes */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* Custom Scrollbar for Main Page Root Only */
+html::-webkit-scrollbar {
+    width: 10px;
+}
+html::-webkit-scrollbar-track {
+    background: #FAF7EE;
+}
+.dark html::-webkit-scrollbar-track {
+    background: #180B10;
+}
+html::-webkit-scrollbar-thumb {
+    background: #770523;
+    border-radius: 4px;
+}
+.dark html::-webkit-scrollbar-thumb {
+    background: #D81A67;
+}
+
+/* Hide all scrollbars across inner UI components, pills, and horizontal bars */
+.no-scrollbar::-webkit-scrollbar,
+div::-webkit-scrollbar,
+nav::-webkit-scrollbar,
+header::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+.no-scrollbar,
+div,
+nav,
+header {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+/* Smooth Focus Ring */
+*:focus-visible {
+    outline: 3px solid #D81A67;
+    outline-offset: 3px;
+}
+
+/* Image Zoom & Lightbox Container */
+.lightbox-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(24, 11, 16, 0.95);
+    backdrop-filter: blur(12px);
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-modal.active {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 1rem;
+    border: 3px solid #ffffff;
+    box-shadow: 8px 8px 0px 0px #D81A67;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-modal.active .lightbox-img {
+    transform: scale(1);
+}
+
+/* UX Case Study Artifact Cards & Highlights */
+.ux-stat-card {
+    background: #ffffff;
+    border: 2px solid #770523;
+    box-shadow: 6px 6px 0px 0px #D0D996;
+}
+
+.dark .ux-stat-card {
+    background: #27131B;
+    border: 2px solid #FAD2E1;
+    box-shadow: 6px 6px 0px 0px #D81A67;
+}
+
+/* Key Takeaway Callout Box (Sticky Note Style) */
+.callout-box {
+    background: #D0D996;
+    color: #770523;
+    border: 2px solid #770523;
+    box-shadow: 4px 4px 0px 0px #770523;
+}
+
+/* Design Artifact Interactive Hover */
+.artifact-frame {
+    transition: all 0.3s ease;
+    cursor: zoom-in;
+}
+
+.artifact-frame:hover {
+    transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   Tactile Digital Scrapbook Hero / Flatlay Aesthetic Styles ("Paper Archive")
+   ========================================================================== */
+
+/* Flatlay Collage Object Container & Realistic Depth Shadows */
+.flatlay-object {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+    filter: drop-shadow(4px 10px 16px rgba(0, 0, 0, 0.55));
+    will-change: transform;
+}
+
+.flatlay-object:hover {
+    transform: scale(1.08) translateY(-8px) rotate(0deg) !important;
+    filter: drop-shadow(8px 20px 30px rgba(0, 0, 0, 0.75));
+    z-index: 45 !important;
+}
+
+/* Spherical 3D Bead Letter Styling */
+.bead-item {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 35% 35%, #ffffff 0%, #f1f5f9 60%, #cbd5e1 100%);
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.35), inset 1px 1px 3px rgba(255, 255, 255, 0.9), 3px 5px 8px rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.bead-item:hover {
+    transform: scale(1.15) translateY(-2px);
+}
+
+.bead-accent {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 35% 35%, #FAD2E1 0%, #D81A67 80%, #770523 100%);
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.4), inset 1px 1px 3px rgba(255, 255, 255, 0.8), 2px 4px 6px rgba(0, 0, 0, 0.4);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.75rem;
+}
+
+/* Vinyl Record Spin on Hover */
+@keyframes spin-record {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-sleeve:hover .vinyl-disc {
+    transform: translateX(35px) rotate(45deg);
+    animation: spin-record 8s linear infinite;
+}
+
+/* Soundwave Animation for Spotify Widget */
+@keyframes sound-wave-pulse {
+    0%, 100% { height: 4px; }
+    50% { height: 14px; }
+}
+
+.sound-bar {
+    width: 3px;
+    background-color: #1DB954;
+    border-radius: 9999px;
+    animation: sound-wave-pulse 1.2s ease-in-out infinite;
+}
+
+.sound-bar:nth-child(2) { animation-delay: 0.2s; }
+.sound-bar:nth-child(3) { animation-delay: 0.4s; }
+.sound-bar:nth-child(4) { animation-delay: 0.1s; }
+
+/* Playing Cards Linen Texture & Subtle Shadow */
+.playing-card {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
+    background-size: 8px 8px;
+    box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Skateboard Deck Wheel 3D Accent */
+.skate-wheel {
+    box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.8), inset -1px -1px 2px rgba(0, 0, 0, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Slow Floating Idle Motion for Flatlay Elements */
+@keyframes float-idle-1 {
+    0%, 100% { transform: translateY(0px) rotate(var(--base-rot, 0deg)); }
+    50% { transform: translateY(-6px) rotate(calc(var(--base-rot, 0deg) + 1.5deg)); }
+}
+
+@keyframes float-idle-2 {
+    0%, 100% { transform: translateY(0px) rotate(var(--base-rot, 0deg)); }
+    50% { transform: translateY(7px) rotate(calc(var(--base-rot, 0deg) - 2deg)); }
+}
+
+.animate-float-1 {
+    animation: float-idle-1 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+    animation: float-idle-2 7s ease-in-out infinite;
+}
+
+/* NDA Protected Screens - Strict Privacy Safeguards */
+.nda-protected-screen {
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    pointer-events: auto;
+}
+
+/* Lightbox fail-safe: never permit unblurred view if ever rendered */
+.lightbox-img[data-nda="true"],
+.lightbox-modal.active .lightbox-img.nda-protected-screen {
+    filter: blur(28px) !important;
+}
+
+/* ==========================================================================
+   Google Material Design Icons / Material Symbols Styling
+   ========================================================================== */
+.material-symbols-outlined, .material-icons {
+    font-family: 'Material Symbols Outlined', 'Material Icons' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga';
+    user-select: none;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Sizing mapping for Tailwind CSS w-* and h-* classes */
+.material-symbols-outlined.w-3, .material-symbols-outlined.h-3,
+.material-icons.w-3, .material-icons.h-3 { font-size: 12px; width: 12px; height: 12px; }
+
+.material-symbols-outlined.w-3\.5, .material-symbols-outlined.h-3\.5,
+.material-icons.w-3\.5, .material-icons.h-3\.5 { font-size: 14px; width: 14px; height: 14px; }
+
+.material-symbols-outlined.w-4, .material-symbols-outlined.h-4,
+.material-icons.w-4, .material-icons.h-4 { font-size: 16px; width: 16px; height: 16px; }
+
+.material-symbols-outlined.w-5, .material-symbols-outlined.h-5,
+.material-icons.w-5, .material-icons.h-5 { font-size: 20px; width: 20px; height: 20px; }
+
+.material-symbols-outlined.w-6, .material-symbols-outlined.h-6,
+.material-icons.w-6, .material-icons.h-6 { font-size: 24px; width: 24px; height: 24px; }
+
+.material-symbols-outlined.w-8, .material-symbols-outlined.h-8,
+.material-icons.w-8, .material-icons.h-8 { font-size: 32px; width: 32px; height: 32px; }
+
+.material-symbols-outlined.w-10, .material-symbols-outlined.h-10,
+.material-icons.w-10, .material-icons.h-10 { font-size: 40px; width: 40px; height: 40px; }
+
+.material-symbols-outlined.w-12, .material-symbols-outlined.h-12,
+.material-icons.w-12, .material-icons.h-12 { font-size: 48px; width: 48px; height: 48px; }

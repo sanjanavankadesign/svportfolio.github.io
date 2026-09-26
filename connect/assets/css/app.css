@@ -1,0 +1,101 @@
+/* Connect SaaS Application Custom Styles */
+
+@keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-spin-segmented {
+    animation: spin-slow 3s linear infinite;
+}
+
+.animate-pulse-ring {
+    animation: pulse-ring 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+
+/* Sidebar Custom Styling */
+.user-footer-bg {
+    background-color: #1e1b4b;
+}
+
+/* AI Assistant Dark Panel */
+.ai-panel-bg {
+    background-color: #232048;
+}
+
+/* Badge & Tag Styling */
+.tag-pill {
+    transition: all 0.2s ease;
+}
+.tag-pill:hover {
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Google Material Design Icons / Material Symbols Styling
+   ========================================================================== */
+.material-symbols-outlined, .material-icons {
+    font-family: 'Material Symbols Outlined', 'Material Icons' !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga';
+    user-select: none;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Sizing mapping for Tailwind CSS w-* and h-* classes */
+.material-symbols-outlined.w-3, .material-symbols-outlined.h-3,
+.material-icons.w-3, .material-icons.h-3 { font-size: 12px; width: 12px; height: 12px; }
+
+.material-symbols-outlined.w-3\.5, .material-symbols-outlined.h-3\.5,
+.material-icons.w-3\.5, .material-icons.h-3\.5 { font-size: 14px; width: 14px; height: 14px; }
+
+.material-symbols-outlined.w-4, .material-symbols-outlined.h-4,
+.material-icons.w-4, .material-icons.h-4 { font-size: 16px; width: 16px; height: 16px; }
+
+.material-symbols-outlined.w-5, .material-symbols-outlined.h-5,
+.material-icons.w-5, .material-icons.h-5 { font-size: 20px; width: 20px; height: 20px; }
+
+.material-symbols-outlined.w-6, .material-symbols-outlined.h-6,
+.material-icons.w-6, .material-icons.h-6 { font-size: 24px; width: 24px; height: 24px; }
+
+.material-symbols-outlined.w-8, .material-symbols-outlined.h-8,
+.material-icons.w-8, .material-icons.h-8 { font-size: 32px; width: 32px; height: 32px; }
+
+.material-symbols-outlined.w-10, .material-symbols-outlined.h-10,
+.material-icons.w-10, .material-icons.h-10 { font-size: 40px; width: 40px; height: 40px; }
+
+.material-symbols-outlined.w-12, .material-symbols-outlined.h-12,
+.material-icons.w-12, .material-icons.h-12 { font-size: 48px; width: 48px; height: 48px; }
