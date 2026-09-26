@@ -2,6 +2,7 @@
 scratch/
 .system_generated/
 *.log
+push_to_github.bat
 
 # OS & Editor files
 .DS_Store
