@@ -621,12 +621,9 @@ function openNdaNoticeModal() {
                     </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-cream dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 space-y-2 leading-relaxed">
+                <div class="p-4 rounded-2xl bg-cream dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                     <p>
-                        To protect proprietary enterprise workflows, candidate privacy, and client intellectual property, <strong>clear unblurred production views are intentionally withheld from public display</strong>.
-                    </p>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">
-                        Full vector walk-throughs, component variants, and interactive prototypes are available in the password-protected Figma file or upon direct request.
+                        Unblurred views are protected under client NDA. Access complete designs in the password-protected Figma file.
                     </p>
                 </div>
 
