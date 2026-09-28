@@ -614,11 +614,6 @@ function openNdaNoticeModal() {
                     <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border-2 border-slate-900 flex items-center justify-center shrink-0">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     </div>
-                    <div>
-                        <div class="inline-block px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-800 dark:text-amber-300 font-mono text-[11px] font-bold uppercase tracking-wider mb-1">Confidentiality Protected</div>
-                        <h3 class="font-serif text-2xl font-bold leading-tight">Protected Under Client NDA</h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Leoforce Connect 2.0 Interface System</p>
-                    </div>
                 </div>
 
                 <div class="p-4 rounded-2xl bg-cream dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
