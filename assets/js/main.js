@@ -607,14 +607,8 @@ function openNdaNoticeModal() {
         modal.className = 'fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md';
         modal.style.display = 'none';
         modal.innerHTML = `
-            <div class="bg-white dark:bg-slate-900 border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark rounded-3xl p-6 sm:p-8 max-w-lg w-full relative space-y-5 text-slate-900 dark:text-white transform transition-transform">
+            <div class="bg-white dark:bg-slate-900 border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark rounded-3xl px-6 pb-6 pt-16 sm:px-8 sm:pb-8 sm:pt-16 max-w-lg w-full relative space-y-5 text-slate-900 dark:text-white transform transition-transform">
                 <button type="button" onclick="closeNdaNoticeModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-900 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="Close modal">&times;</button>
-                
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border-2 border-slate-900 flex items-center justify-center shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </div>
-                </div>
 
                 <div class="p-4 rounded-2xl bg-cream dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                     <p>
