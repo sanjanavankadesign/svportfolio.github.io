@@ -701,3 +701,47 @@ window.lucide = {
 
 
 
+
+// ==========================================================================
+// 9. Premium Polish: scroll reveal and header depth
+// ==========================================================================
+(function initPremiumPolish() {
+    const header = document.querySelector('header');
+    if (header) {
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    const targets = document.querySelectorAll([
+        '[data-reveal]',
+        '#work > div:first-child',
+        '#work article',
+        '#work > div:last-child',
+        '#process .text-center',
+        '#process .grid > div',
+        '#about .grid > div',
+        'footer .grid > div'
+    ].join(','));
+    if (!targets.length) return;
+
+    document.documentElement.classList.add('js-reveal');
+    targets.forEach((el) => {
+        const siblings = Array.from(el.parentElement.children).filter((c) => [...targets].includes(c));
+        el.style.setProperty('--reveal-delay', `${Math.min(siblings.indexOf(el), 4) * 90}ms`);
+        el.classList.add('reveal');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach((el) => observer.observe(el));
+})();

@@ -64,7 +64,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/styles.css?v=5.0">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=6.0">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -247,6 +247,34 @@
     </section>
 
     <!-- Main Content Body -->
+    <!-- At a Glance (TL;DR for quick readers) -->
+    <section class="py-8 px-6 max-w-4xl mx-auto">
+        <div class="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-900 border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark">
+            <div class="flex flex-wrap items-baseline justify-between gap-2 mb-6">
+                <h2 class="font-serif text-2xl font-bold text-slate-900 dark:text-white">At a Glance</h2>
+                <span class="font-mono text-xs font-bold uppercase tracking-wider text-slate-500">The 30-second version</span>
+            </div>
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+                <div class="border-l-4 border-stickypink pl-4">
+                    <dt class="font-display font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">The Problem</dt>
+                    <dd class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">Design graduates in India want to start companies, but legal setup, funding, and finding mentors stop most ventures early. Fewer than 20% of those surveyed had completed one.</dd>
+                </div>
+                <div class="border-l-4 border-stickyyellow pl-4">
+                    <dt class="font-display font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">My Role</dt>
+                    <dd class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">Solo designer and researcher on a four-week, open-brief thesis, guided by Prof. Dipanker Gogoi.</dd>
+                </div>
+                <div class="border-l-4 border-stickyblue pl-4">
+                    <dt class="font-display font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">What I Did</dt>
+                    <dd class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">Interviewed 7 founders, surveyed design students, tore down 3 competitors, synthesized five problem clusters, prioritized by impact and effort, and designed two core flows end to end.</dd>
+                </div>
+                <div class="border-l-4 border-emerald-400 pl-4">
+                    <dt class="font-display font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">Outcome</dt>
+                    <dd class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed">A high-fidelity concept covering matching, collaboration, and guided learning. The thesis jury commended the depth of the research and process.</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
     <main class="py-12 px-6 max-w-4xl mx-auto space-y-16">
 
         <!-- 01 | Overview, Problem & Context -->
@@ -586,6 +614,47 @@
                         <span class="px-2.5 py-1 bg-slate-200 text-slate-950 font-display font-bold text-xs rounded block w-max">DIRECTION 3 (?)</span>
                         <h4 class="font-serif font-bold text-base text-slate-900 dark:text-white">Streamlined Admin Tool</h4>
                         <p class="text-xs text-slate-600 dark:text-slate-300">High-impact, but intentionally scoped out for future phase due to unresolved effort & scope limits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why These Directions: cluster-to-decision trace -->
+            <div class="p-6 sm:p-8 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-6">
+                <div>
+                    <span class="font-hand text-xl text-stickypink font-bold">From Insight to Decision ✦</span>
+                    <h3 class="font-serif font-bold text-2xl text-slate-900 dark:text-white">Why these two directions</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">Each direction answers specific research clusters. Just as important is what I chose not to build.</p>
+                </div>
+                <div class="divide-y divide-slate-200 dark:divide-slate-800">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-5 first:pt-0">
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-stickypink">Cluster 01 · Mentorship & Team-Building</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">Finding mentors was a gap at every skill level, and designers lacked a way to meet technical or business co-founders.</p>
+                        </div>
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-500">Decision → Matching</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">Criteria-based matching by stage, domain, and location, with vetted profiles to build trust before the first message.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-5">
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-stickypink">Clusters 02 – 04 · Skills, Legal & Funding</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">Founders felt unprepared for business development, legal structures, IP, and grants, and existing tools assumed prior business literacy.</p>
+                        </div>
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-500">Decision → Learning Hub</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">Plain-language modules and milestone-linked roadmaps that walk founders from idea validation to incorporation and grant applications.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-6 py-5 last:pb-0">
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-stickypink">Cluster 05 · Startup Operations</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">Founders juggled finances, deadlines, and documents across scattered tools.</p>
+                        </div>
+                        <div class="md:col-span-6">
+                            <span class="font-mono text-[11px] font-bold uppercase tracking-wider text-slate-500">Trade-off → Deferred</span>
+                            <p class="text-sm text-slate-800 dark:text-slate-200 leading-relaxed mt-1">High impact, but too broad to resolve well in four weeks. I chose to go deep on two directions rather than shallow on three. Only deadline reminders made it into the dashboard.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1150,6 +1219,33 @@
                 </div>
             </div>
 
+            <!-- Jury Feedback, Validation Plan & Looking Back -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-cream dark:bg-slate-800 rounded-2xl border-2 border-slate-900 space-y-3">
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white">Jury Feedback</h4>
+                    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">The thesis jury singled out the <strong>depth of the research and the rigor of the process</strong>, from founder interviews and survey data through to clustering and prioritization.</p>
+                </div>
+                <div class="p-6 bg-cream dark:bg-slate-800 rounded-2xl border-2 border-slate-900 space-y-3">
+                    <h4 class="font-serif font-bold text-lg text-slate-900 dark:text-white">How I'd Validate It Next</h4>
+                    <ul class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-2 list-disc list-inside">
+                        <li><strong>Task-based usability tests</strong> with the founders I interviewed, on finding a mentor and following a learning path.</li>
+                        <li><strong>Success signals:</strong> time to first mentor connection, roadmap step completion, and repeat visits to the Learning Hub.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="p-6 sm:p-8 bg-slate-900 text-white rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
+                <div>
+                    <span class="font-hand text-xl text-stickyyellow font-bold">Looking Back ✦</span>
+                    <h3 class="font-serif font-bold text-2xl">What I'd do differently</h3>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm text-slate-300 leading-relaxed">
+                    <li class="border-t-2 border-stickypink pt-3"><strong class="text-white block mb-1">Test mid-way, not at the end</strong>Four weeks left no room for usability testing. I'd put rough prototypes in front of founders halfway through.</li>
+                    <li class="border-t-2 border-stickyyellow pt-3"><strong class="text-white block mb-1">Fewer screens, deeper flows</strong>Prioritize one complete, tested journey over broad coverage of every feature.</li>
+                    <li class="border-t-2 border-emerald-400 pt-3"><strong class="text-white block mb-1">Revisit the admin tool</strong>Founders' operational pain was real. With validated core flows, it's the natural next phase.</li>
+                </ul>
+            </div>
+
             <!-- Previous Case Study Navigation (Red Annotated Position) -->
             <div class="flex items-center justify-end pt-4">
                 <a href="case-study-1.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-stickypink text-slate-950 font-display font-bold text-xs sm:text-sm border-2 border-slate-900 dark:border-slate-700 shadow-brutal dark:shadow-brutal-dark hover:bg-stickyyellow hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
@@ -1208,7 +1304,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../assets/js/main.js?v=6.2"></script>
+    <script src="../assets/js/main.js?v=6.3"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>
