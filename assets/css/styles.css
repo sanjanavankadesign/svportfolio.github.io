@@ -358,3 +358,112 @@ header {
 
 .material-symbols-outlined.w-12, .material-symbols-outlined.h-12,
 .material-icons.w-12, .material-icons.h-12 { font-size: 48px; width: 48px; height: 48px; }
+
+/* ==========================================================================
+   Premium Polish Layer — refines motion, texture and typography without
+   changing the visual language
+   ========================================================================== */
+
+:root {
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Fine film grain for a tactile, printed feel */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9990;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark body::after {
+    opacity: 0.05;
+}
+
+/* Typography refinement */
+body {
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+}
+h1, h2, h3 {
+    text-wrap: balance;
+}
+.font-serif {
+    letter-spacing: -0.01em;
+}
+p {
+    text-wrap: pretty;
+}
+
+/* One consistent, smooth easing curve for every interaction */
+.transition-all,
+.transition-colors,
+.transition-transform {
+    transition-timing-function: var(--ease-premium);
+}
+
+/* Tactile press: brutal shadows collapse as the element is pushed */
+.shadow-brutal[class*="hover:translate-x-0.5"]:hover {
+    box-shadow: 2px 2px 0 0 rgba(24, 11, 16, 1);
+}
+.dark [class*="dark:shadow-brutal-dark"][class*="hover:translate-x-0.5"]:hover {
+    box-shadow: 2px 2px 0 0 rgba(250, 247, 238, 0.9);
+}
+[class*="shadow-brutal"][class*="hover:translate-x-0.5"]:active {
+    transform: translate(4px, 4px) !important;
+    box-shadow: 0 0 0 0 transparent !important;
+}
+
+/* Header gains depth once the page scrolls */
+header.is-scrolled {
+    box-shadow: 0 10px 30px -18px rgba(24, 11, 16, 0.45);
+}
+.dark header.is-scrolled {
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.9);
+}
+
+/* Case study cards: slower, more cinematic image zoom */
+article[role="link"] img {
+    transition-duration: 900ms !important;
+    transition-timing-function: var(--ease-premium) !important;
+}
+
+/* Scroll reveal (only active when JS is running) */
+.js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.js-reveal .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Animated underline for text links in the footer */
+.link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.4s var(--ease-premium), color 0.2s ease;
+}
+.link-underline:hover {
+    background-size: 100% 1.5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .js-reveal .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
