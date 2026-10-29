@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,12 +19,12 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"DM Serif Display"', 'serif'],
-                        italicSerif: ['"Instrument Serif"', 'serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                        mono: ['"Space Mono"', 'monospace'],
-                        hand: ['"Caveat"', 'cursive'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        italicSerif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        display: ['Geist', 'system-ui', 'sans-serif'],
+                        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+                        hand: ['"Geist Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         cream: '#FAF7EE',
@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=6.0">
+    <link rel="stylesheet" href="assets/css/styles.css?v=7.0">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -65,7 +65,7 @@
     <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/90 dark:bg-darkBg/90 border-b-2 border-slate-900 dark:border-slate-700 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="group flex items-center gap-3" aria-label="Sanjana Vanka Portfolio Home">
-                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center group-hover:rotate-2 transition-transform">
+                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center transition-transform">
                     <img src="assets/images/logo.png" alt="SAN Logo — Sanjana Vanka" class="h-8 w-auto object-contain">
                 </div>
             </a>
@@ -147,7 +147,7 @@
                         Sanjana Vanka
                     </span>
                     <span class="block font-serif text-[26px] sm:text-[34px] md:text-[42px] lg:text-[48px] leading-[1.1] tracking-tight font-bold text-white drop-shadow-md">
-                        Product Designer <span class="text-stickypink font-hand text-3xl sm:text-4xl inline-block -rotate-6">✦</span>
+                        Product Designer
                     </span>
                 </h1>
 
@@ -175,7 +175,7 @@
                     <img src="assets/images/sanjana-cutout.png?v=2" alt="Sanjana Vanka" class="h-[340px] sm:h-[440px] md:h-[500px] lg:h-[540px] w-auto object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.95)] group-hover:scale-105 transition-transform duration-500">
                     
                     <!-- Floating Interactive Spotify Embed Player -->
-                    <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:-left-6 lg:-left-10 sm:bottom-0 z-30 w-[290px] sm:w-[330px] rounded-2xl bg-[#121212]/95 border-2 border-slate-900 shadow-brutal-dark backdrop-blur-md transform -rotate-3 hover:rotate-0 transition-all duration-300 overflow-hidden">
+                    <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:-left-6 lg:-left-10 sm:bottom-0 z-30 w-[290px] sm:w-[330px] rounded-2xl bg-[#121212]/95 border-2 border-slate-900 shadow-brutal-dark backdrop-blur-md transform transition-all duration-300 overflow-hidden">
                         <div class="flex items-center justify-between px-3 py-1.5 bg-[#181818] border-b border-slate-800 text-[11px] font-mono">
                             <span class="flex items-center gap-1.5 text-[#1DB954] font-bold">
                                 <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -183,7 +183,7 @@
                                 </svg>
                                 ON REPEAT
                             </span>
-                            <span class="text-[10px] text-slate-400 font-sans font-medium">🎧 Sanjana's Track</span>
+                            <span class="text-[10px] text-slate-400 font-sans font-medium">Sanjana's Track</span>
                         </div>
                         <iframe style="border-radius:0 0 14px 14px; display:block;" src="https://open.spotify.com/embed/track/1ChulFMnwxoD74Me8eX2TU?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
@@ -199,7 +199,7 @@
         
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b-2 border-slate-900 dark:border-slate-700 pb-8">
             <div>
-                <span class="font-hand text-2xl text-stickypink font-bold tracking-wide block">Selected Work ✦</span>
+                <span class="font-hand text-2xl text-stickypink font-bold tracking-wide block">Selected Work</span>
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mt-1">Featured Projects</h2>
             </div>
             <p class="text-slate-600 dark:text-slate-400 font-medium text-sm max-w-md">
@@ -213,7 +213,7 @@
             <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-1.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-1.html';}" role="link" tabindex="0" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
                 
                 <!-- Sticky Badge Decorator -->
-                <div class="absolute top-4 right-4 z-10 bg-stickypink text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 -rotate-3 shadow-brutal">
+                <div class="absolute top-4 right-4 z-10 bg-stickypink text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     Case Study 01
                 </div>
 
@@ -256,7 +256,7 @@
             <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-2.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-2.html';}" role="link" tabindex="0" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
                 
                 <!-- Sticky Badge Decorator -->
-                <div class="absolute top-4 right-4 z-10 bg-stickyyellow text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 rotate-2 shadow-brutal">
+                <div class="absolute top-4 right-4 z-10 bg-stickyyellow text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     Case Study 02
                 </div>
 
@@ -315,7 +315,6 @@
             <div class="shrink-0">
                 <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-slate-900 text-xs font-display font-bold text-slate-900 dark:text-white shadow-sm">
                     <span>In Progress</span>
-                    <span class="text-stickypink">✦</span>
                 </span>
             </div>
         </div>
@@ -325,7 +324,7 @@
     <section id="process" class="py-24 lg:py-32 bg-slate-900 text-white border-y-2 border-slate-900 px-6 relative overflow-hidden">
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="font-hand text-2xl text-stickyyellow font-bold tracking-wide">Process ✦</span>
+                <span class="font-hand text-2xl text-stickyyellow font-bold tracking-wide">Process</span>
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold mt-1 text-white">How I Work</h2>
                 <p class="text-slate-400 text-sm mt-3 font-sans">
                     A human-centered practice, augmented by AI. Research and judgment stay firmly with me; AI extends how broadly I explore and how quickly I move from concept to prototype.
@@ -343,7 +342,7 @@
                         Conducting user interviews and contextual inquiry to build a grounded understanding of needs, behaviors, and pain points.
                     </p>
                     <p class="mt-auto pt-4 border-t border-slate-700 text-xs leading-relaxed font-sans text-slate-400">
-                        <span class="text-stickypink font-bold">✦ Human-led:</span> every interview conducted and synthesized first-hand.
+                        <span class="text-stickypink font-bold">Human-led:</span> every interview conducted and synthesized first-hand.
                     </p>
                 </div>
 
@@ -356,7 +355,7 @@
                         Every project begins on paper: articulating the problem, mapping flows, and sketching screens to establish structure before pixels.
                     </p>
                     <p class="mt-auto pt-4 border-t border-slate-700 text-xs leading-relaxed font-sans text-slate-400">
-                        <span class="text-stickyyellow font-bold">✦ With AI:</span> pressure-testing assumptions and uncovering edge cases with Claude.
+                        <span class="text-stickyyellow font-bold">With AI:</span> pressure-testing assumptions and uncovering edge cases with Claude.
                     </p>
                 </div>
 
@@ -369,7 +368,7 @@
                         Translating sketches into high-fidelity interfaces, cohesive visual systems, and considered interactions in Figma.
                     </p>
                     <p class="mt-auto pt-4 border-t border-slate-700 text-xs leading-relaxed font-sans text-slate-400">
-                        <span class="text-stickyblue font-bold">✦ With AI:</span> broadening exploration with Claude and Figma before converging on a direction.
+                        <span class="text-stickyblue font-bold">With AI:</span> broadening exploration with Claude and Figma before converging on a direction.
                     </p>
                 </div>
 
@@ -382,7 +381,7 @@
                         Validating with real users and refining until the experience is intuitive, accessible, and production-ready.
                     </p>
                     <p class="mt-auto pt-4 border-t border-slate-700 text-xs leading-relaxed font-sans text-slate-400">
-                        <span class="text-emerald-400 font-bold">✦ With AI:</span> building functional prototypes in Antigravity to test real interactions sooner.
+                        <span class="text-emerald-400 font-bold">With AI:</span> building functional prototypes in Antigravity to test real interactions sooner.
                     </p>
                 </div>
 
@@ -390,7 +389,7 @@
 
             <div class="mt-12 max-w-3xl mx-auto text-center">
                 <p class="text-slate-400 text-sm leading-relaxed font-sans">
-                    <span class="font-hand text-xl text-stickyyellow font-bold mr-1">Still evolving ✦</span>
+                    <span class="font-hand text-xl text-stickyyellow font-bold mr-1">Still evolving</span>
                     This approach took shape after a conversation with designer
                     <a href="https://www.harshitaak.com/portfolio.html" target="_blank" rel="noopener noreferrer" class="text-white underline decoration-stickyyellow decoration-2 underline-offset-4 hover:text-stickyyellow transition-colors">Harshit Taak</a>
                     on the future of UX in the age of AI. I continue to explore how AI can extend my practice, while keeping research, judgment, and empathy firmly human.
@@ -405,7 +404,7 @@
             
             <div class="lg:col-span-5 relative">
                 <!-- Photo Frame -->
-                <div class="bg-white dark:bg-slate-900 p-3.5 rounded-2xl border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark -rotate-2">
+                <div class="bg-white dark:bg-slate-900 p-3.5 rounded-2xl border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark">
                     <div class="aspect-[16/10] rounded-xl bg-slate-900 overflow-hidden border-2 border-slate-900 relative group">
                         <img src="assets/images/sanjana-workshop.jpg" alt="Sanjana Vanka Leading Design Presentation" class="w-full h-full object-cover object-left group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -447,7 +446,7 @@
                 <!-- Left Column: High-Impact Call to Action -->
                 <div class="lg:col-span-7 space-y-6">
                     <h2 class="font-serif text-4xl sm:text-6xl font-bold text-white tracking-tight leading-[1.1]">
-                        Let's build something <span class="text-stickypink underline decoration-wavy decoration-2 underline-offset-8">together</span>.
+                        Let's build something <span class="text-stickypink">together</span>.
                     </h2>
                     
                     <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-sans font-normal">
@@ -517,7 +516,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=6.3"></script>
+    <script src="assets/js/main.js?v=6.4"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>

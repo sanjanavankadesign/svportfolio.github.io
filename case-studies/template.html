@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,10 +19,12 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"DM Serif Display"', 'serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                        hand: ['"Caveat"', 'cursive'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        italicSerif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        display: ['Geist', 'system-ui', 'sans-serif'],
+                        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+                        hand: ['"Geist Mono"', 'ui-monospace', 'monospace'],
                     },
                     colors: {
                         cream: '#FAF7EE',
@@ -55,7 +57,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=7.0">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -63,7 +65,7 @@
     <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/90 dark:bg-darkBg/90 border-b-2 border-slate-900 dark:border-slate-700 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="../index.html" class="group flex items-center gap-3" aria-label="Sanjana Vanka Portfolio Home">
-                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center group-hover:rotate-2 transition-transform">
+                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center transition-transform">
                     <img src="../assets/images/logo.png" alt="SAN Logo — Sanjana Vanka" class="h-8 w-auto object-contain">
                 </div>
             </a>
@@ -145,10 +147,10 @@
     <!-- Case Study Hero Section -->
     <section class="pt-20 pb-16 px-6 max-w-4xl mx-auto">
         <div class="mb-6 flex flex-wrap gap-2">
-            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickypink text-slate-950 border-2 border-slate-900 shadow-brutal -rotate-1">
+            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickypink text-slate-950 border-2 border-slate-900 shadow-brutal">
                 UI/UX CASE STUDY
             </span>
-            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickyyellow text-slate-950 border-2 border-slate-900 shadow-brutal rotate-1">
+            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickyyellow text-slate-950 border-2 border-slate-900 shadow-brutal">
                 MOBILE & WEB
             </span>
         </div>
@@ -221,7 +223,7 @@
 
         <!-- Section 1: Problem Statement -->
         <section id="problem" class="space-y-4">
-            <span class="font-hand text-2xl text-stickypink font-bold block">01. Understanding the Challenge ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">01. Understanding the Challenge</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">The Problem Statement</h2>
             
             <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
@@ -240,7 +242,7 @@
 
         <!-- Section 2: Research & Insights -->
         <section id="research" class="space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">02. Discovery Phase ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">02. Discovery Phase</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">User Research & Key Insights</h2>
             
             <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
@@ -272,7 +274,7 @@
 
         <!-- Section 3: Wireframes & Architecture -->
         <section id="architecture" class="space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">03. Ideation & Mindmapping ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">03. Ideation & Mindmapping</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Information Architecture & Wireframes</h2>
 
             <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
@@ -289,7 +291,7 @@
 
         <!-- Section 4: Visual UI & Final Designs -->
         <section id="design" class="space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">04. Visual Craftsmanship ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">04. Visual Craftsmanship</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">High-Fidelity Interface Solutions</h2>
 
             <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
@@ -309,7 +311,7 @@
 
         <!-- Section 5: Retrospective & Learnings -->
         <section id="reflection" class="space-y-6 pt-8 border-t-2 border-slate-900 dark:border-slate-700">
-            <span class="font-hand text-2xl text-stickypink font-bold block">05. Reflection ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">05. Reflection</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Key Takeaways & Retrospective</h2>
 
             <div class="space-y-4">
@@ -344,7 +346,7 @@
             <!-- Email Outreach Card inside Footer -->
             <div class="p-8 sm:p-10 bg-slate-800/80 rounded-2xl border-2 border-slate-700 shadow-brutal-dark flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="space-y-1.5 text-center md:text-left">
-                    <span class="font-hand text-xl text-stickypink font-bold block">Interested in working together? ✦</span>
+                    <span class="font-hand text-xl text-stickypink font-bold block">Interested in working together?</span>
                     <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">Let me know your thoughts</h3>
                     <p class="font-mono text-xs sm:text-sm text-slate-300 select-all">sanju101vanka@gmail.com</p>
                 </div>
@@ -385,7 +387,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../assets/js/main.js?v=6.3"></script>
+    <script src="../assets/js/main.js?v=6.4"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>

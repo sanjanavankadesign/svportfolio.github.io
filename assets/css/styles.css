@@ -467,3 +467,66 @@ article[role="link"] img {
         scroll-behavior: auto !important;
     }
 }
+
+/* ==========================================================================
+   Type System — Instrument Serif (headlines) · Geist (text) · Geist Mono (labels)
+   ========================================================================== */
+
+html {
+    font-synthesis: none; /* never fake bold or italic */
+}
+
+body {
+    font-feature-settings: 'kern' 1, 'liga' 1, 'ss01' 1;
+    letter-spacing: -0.005em;
+}
+
+/* Headlines: Instrument Serif only exists at 400, so keep it there */
+.font-serif,
+.font-italicSerif {
+    font-weight: 400 !important;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+}
+
+/* Small headings read better in the sans than in a display serif */
+h4.font-serif,
+.font-serif.text-sm,
+.font-serif.text-base,
+.font-serif.text-lg {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-weight: 600 !important;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+}
+
+/* Former handwritten eyebrows become quiet uppercase labels */
+.font-hand {
+    font-size: 0.72rem !important;
+    line-height: 1.4 !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+/* Calmer weights for UI text, tags and buttons */
+.font-display.font-extrabold,
+.font-display.font-bold,
+.font-sans.font-extrabold {
+    font-weight: 600 !important;
+}
+.font-mono.font-bold {
+    font-weight: 500 !important;
+}
+.font-display {
+    letter-spacing: 0.01em;
+}
+
+/* Optical size compensation for the lighter serif */
+.font-serif.text-xl {
+    font-size: 1.5rem;
+    line-height: 1.15;
+}
+.font-serif.text-2xl {
+    font-size: 1.75rem;
+}
