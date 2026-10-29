@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -19,11 +19,13 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        sans: ['Geist', 'system-ui', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        italicSerif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        display: ['Geist', 'system-ui', 'sans-serif'],
+                        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+                        hand: ['"Geist Mono"', 'ui-monospace', 'monospace'],
                         inter: ['"Inter"', 'sans-serif'],
-                        serif: ['"DM Serif Display"', 'serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                        hand: ['"Caveat"', 'cursive'],
                     },
                     colors: {
                         cream: '#FAF7EE',
@@ -64,7 +66,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../assets/css/styles.css?v=6.0">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=7.0">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -72,7 +74,7 @@
     <header class="sticky top-0 z-50 backdrop-blur-md bg-cream/90 dark:bg-darkBg/90 border-b-2 border-slate-900 dark:border-slate-700 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="../index.html" class="group flex items-center gap-3" aria-label="Sanjana Vanka Portfolio Home">
-                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center group-hover:rotate-2 transition-transform">
+                <div class="h-12 px-3 bg-white border-2 border-slate-900 shadow-brutal dark:shadow-brutal-dark rounded-xl flex items-center justify-center transition-transform">
                     <img src="../assets/images/logo.png" alt="SAN Logo — Sanjana Vanka" class="h-8 w-auto object-contain">
                 </div>
             </a>
@@ -148,7 +150,7 @@
                 <a href="#prioritization" class="hover:text-stickypink transition-colors">04 PRIORITIZATION</a>
                 <a href="#solutions" class="hover:text-stickypink transition-colors">05 SOLUTIONS</a>
                 <a href="#ia-visuals" class="hover:text-stickypink transition-colors">06 IA & VISUALS</a>
-                <a href="#final-designs" class="text-stickypink font-extrabold hover:underline">07 FINAL UI SHOWCASE ✦</a>
+                <a href="#final-designs" class="text-stickypink font-extrabold hover:underline">07 FINAL UI SHOWCASE</a>
                 <a href="#reflection" class="hover:text-stickypink transition-colors">08 REFLECTION</a>
             </div>
         </div>
@@ -157,10 +159,10 @@
     <!-- Case Study Hero Section -->
     <section class="pt-16 pb-16 px-6 max-w-4xl mx-auto">
         <div class="mb-6 flex flex-wrap gap-2">
-            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickypink text-slate-950 border-2 border-slate-900 shadow-brutal -rotate-1">
+            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickypink text-slate-950 border-2 border-slate-900 shadow-brutal">
                 THESIS PROJECT (SEM 7)
             </span>
-            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickyyellow text-slate-950 border-2 border-slate-900 shadow-brutal rotate-1">
+            <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickyyellow text-slate-950 border-2 border-slate-900 shadow-brutal">
                 OPEN BRIEF
             </span>
             <span class="px-3.5 py-1 rounded-md text-xs font-display font-bold bg-stickyblue text-slate-950 border-2 border-slate-900 shadow-brutal">
@@ -173,7 +175,7 @@
         </h1>
 
         <p class="text-xl font-hand text-stickypink font-bold tracking-wide mb-8">
-            Building an Entrepreneurial Ecosystem & Learning Infrastructure for Design Founders in India ✦
+            Building an Entrepreneurial Ecosystem & Learning Infrastructure for Design Founders in India
         </p>
 
         <!-- Metadata Grid -->
@@ -211,7 +213,7 @@
                         <img src="../assets/images/figma-icon.png" alt="Figma" class="w-4 h-4 rounded-md object-contain shrink-0 shadow-sm">
                         <span>VIEW IN FIGMA ↗</span>
                     </a>
-                    <span class="font-hand font-bold text-stickypink text-sm hidden sm:inline">Click image to inspect full view ✦</span>
+                    <span class="font-hand font-bold text-stickypink text-sm hidden sm:inline">Click image to inspect full view</span>
                 </div>
             </div>
         </div>
@@ -279,7 +281,7 @@
 
         <!-- 01 | Overview, Problem & Context -->
         <section id="overview" class="scroll-mt-36 space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">01. Overview & Problem ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">01. Overview & Problem</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Problem Statement & Context</h2>
             
             <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
@@ -334,7 +336,7 @@
 
         <!-- 02 | Research & Validation -->
         <section id="research" class="scroll-mt-36 space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">02. Research & Validation ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">02. Research & Validation</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Ecosystem Research & Discovery</h2>
 
             <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
@@ -401,7 +403,7 @@
             <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-6">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 gap-2">
                     <div>
-                        <span class="font-hand text-xl text-stickypink font-bold block">Quantitative Insights ✦</span>
+                        <span class="font-hand text-xl text-stickypink font-bold block">Quantitative Insights</span>
                         <h3 class="font-serif font-bold text-2xl text-slate-900 dark:text-white">Survey Findings & Data Points</h3>
                     </div>
                 </div>
@@ -522,7 +524,7 @@
 
         <!-- 03 | Synthesis — Pain Points -> HMW -->
         <section id="synthesis" class="scroll-mt-36 space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">03. Synthesis ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">03. Synthesis</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Affinity Mapping & How Might We (HMW)</h2>
 
             <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-base">
@@ -589,7 +591,7 @@
 
         <!-- 04 | Feature Prioritization -->
         <section id="prioritization" class="scroll-mt-36 space-y-6">
-            <span class="font-hand text-2xl text-stickypink font-bold block">04. Feature Prioritization ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">04. Feature Prioritization</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Impact vs. Effort Matrix</h2>
 
             <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
@@ -621,7 +623,7 @@
             <!-- Why These Directions: cluster-to-decision trace -->
             <div class="p-6 sm:p-8 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-6">
                 <div>
-                    <span class="font-hand text-xl text-stickypink font-bold">From Insight to Decision ✦</span>
+                    <span class="font-hand text-xl text-stickypink font-bold">From Insight to Decision</span>
                     <h3 class="font-serif font-bold text-2xl text-slate-900 dark:text-white">Why these two directions</h3>
                     <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">Each direction answers specific research clusters. Just as important is what I chose not to build.</p>
                 </div>
@@ -667,7 +669,7 @@
 
         <!-- 05 | Solutions -->
         <section id="solutions" class="scroll-mt-36 space-y-8">
-            <span class="font-hand text-2xl text-stickypink font-bold block">05. Solutions ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">05. Solutions</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">The Solution — Core Ecosystem & User Flows</h2>
             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
                 To resolve the acute barriers uncovered during founder research, PATH establishes two foundational pillars: an intelligent, criteria-driven mentorship and peer matchmaking flow, and a structured, jargon-free learning hub that guides designers step-by-step through business and technical execution.
@@ -832,7 +834,7 @@
 
         <!-- 06 | Information Architecture & Visual System -->
         <section id="ia-visuals" class="scroll-mt-36 space-y-8">
-            <span class="font-hand text-2xl text-stickypink font-bold block">06. IA & System Language ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">06. IA & System Language</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Information Architecture & Visual System</h2>
 
             <!-- Information Architecture -->
@@ -858,7 +860,7 @@
                         <div class="artifact-frame relative p-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-900 overflow-hidden group">
                             <img src="../assets/images/path-ia-tree-matching.png" alt="Matching Module IA Taxonomy Tree" class="w-full h-auto object-contain rounded-lg zoomable">
                             <div class="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/90 text-white text-[10px] font-mono px-2 py-1 rounded">
-                                🔍 Click to Zoom & Pan
+                                Click to Zoom & Pan
                             </div>
                         </div>
                     </div>
@@ -881,7 +883,7 @@
                         <div class="artifact-frame relative p-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-900 overflow-hidden group">
                             <img src="../assets/images/path-ia-tree-learning.png" alt="Learning Hub IA Taxonomy Tree" class="w-full h-auto object-contain rounded-lg zoomable">
                             <div class="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/90 text-white text-[10px] font-mono px-2 py-1 rounded">
-                                🔍 Click to Zoom & Pan
+                                Click to Zoom & Pan
                             </div>
                         </div>
                     </div>
@@ -960,7 +962,7 @@
         <!-- 07 | Final UI Showcase (High-Fidelity Interface Suite) -->
         <section id="final-designs" class="scroll-mt-36 space-y-8">
             <div class="border-b-2 border-slate-900 dark:border-slate-700 pb-4">
-                <span class="font-hand text-2xl text-stickypink font-bold block">07. High-Fidelity Solution ✦</span>
+                <span class="font-hand text-2xl text-stickypink font-bold block">07. High-Fidelity Solution</span>
                 <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mt-1">Final UI Showcase</h2>
                 <p class="text-sm text-slate-600 dark:text-slate-300 font-medium max-w-2xl mt-2 leading-relaxed">
                     Presenting the complete, high-fidelity interfaces designed for PATH — unifying founder networking, mentor matching, in-app collaboration, and modular learning into a polished digital ecosystem.
@@ -1185,7 +1187,7 @@
 
         <!-- 08 | Status & Reflection -->
         <section id="reflection" class="scroll-mt-36 space-y-6 pt-8 border-t-2 border-slate-900 dark:border-slate-700">
-            <span class="font-hand text-2xl text-stickypink font-bold block">08. Reflections & Next Steps ✦</span>
+            <span class="font-hand text-2xl text-stickypink font-bold block">08. Reflections & Next Steps</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Status & Project Proof Points</h2>
 
             <div class="p-6 bg-white dark:bg-slate-900 rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
@@ -1236,7 +1238,7 @@
 
             <div class="p-6 sm:p-8 bg-slate-900 text-white rounded-2xl border-2 border-slate-900 shadow-brutal space-y-4">
                 <div>
-                    <span class="font-hand text-xl text-stickyyellow font-bold">Looking Back ✦</span>
+                    <span class="font-hand text-xl text-stickyyellow font-bold">Looking Back</span>
                     <h3 class="font-serif font-bold text-2xl">What I'd do differently</h3>
                 </div>
                 <ul class="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm text-slate-300 leading-relaxed">
@@ -1263,7 +1265,7 @@
             <!-- Email Outreach Card inside Footer -->
             <div class="p-8 sm:p-10 bg-slate-800/80 rounded-2xl border-2 border-slate-700 shadow-brutal-dark flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="space-y-1.5 text-center md:text-left">
-                    <span class="font-hand text-xl text-stickypink font-bold block">Interested in working together? ✦</span>
+                    <span class="font-hand text-xl text-stickypink font-bold block">Interested in working together?</span>
                     <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">Let me know your thoughts</h3>
                     <p class="font-mono text-xs sm:text-sm text-slate-300 select-all">sanju101vanka@gmail.com</p>
                 </div>
@@ -1304,7 +1306,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../assets/js/main.js?v=6.3"></script>
+    <script src="../assets/js/main.js?v=6.4"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>
