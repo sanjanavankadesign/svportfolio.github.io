@@ -48,13 +48,19 @@
     background: linear-gradient(180deg, #0C0C24 0%, #1C1D3E 70%, #34365C 100%);
 }
 
-/* Hero name: soft metal with a hard plastic edge, no horizon line through the letters */
-.type-name {
-    background: linear-gradient(180deg, #FFFFFF 0%, #F8F3F7 45%, #B0B2C9 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(3px 3px 0 #0B06F6);
+/* Hero name: a wide Y2K grotesque, set flat so the letterforms do the work */
+.type-name.type-display {
+    font-family: "Michroma", var(--font-body);
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #F8F3F7;
+}
+@media (min-width: 768px) {
+    .type-name.type-display {
+        font-size: 50px;
+    }
 }
 
 /* Display type: 44/50 on mobile, 72/80 on desktop */
