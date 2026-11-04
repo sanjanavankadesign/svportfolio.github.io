@@ -613,10 +613,10 @@ article.bg-white, a.bg-white.rounded-2xl, a.bg-white.rounded-3xl, .ux-stat-card 
     border: 0 !important;
     box-shadow: none !important;
 }
-article.bg-white .p-8 {
+article.bg-white .p-8, a.bg-white .p-8 {
     padding: 24px 0 0;
 }
-article.bg-white > .relative.overflow-hidden {
+article.bg-white > .relative.overflow-hidden, a.bg-white > .relative.overflow-hidden {
     border-radius: 16px;
     border-bottom-width: 0;
 }
