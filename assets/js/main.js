@@ -1,5 +1,77 @@
 // Main JavaScript for Sanjana Vanka Portfolio
 
+// First-visit loader: the logo spins, the pointer spins it faster, and it lands in the nav
+(function initLoader() {
+    const root = document.documentElement;
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+    if (!root.classList.contains('is-loading')) { loader.remove(); return; }
+
+    const logo = loader.querySelector('.loader__logo');
+    const chunks = loader.querySelectorAll('.loader__bar span');
+    const MIN_MS = 1200, MAX_MS = 3000, FLY_MS = 400, BASE_FPS = 15, FRAMES = 60;
+    const start = performance.now();
+    let frame = 0, extra = 0, last = start, lastX = null, raf = 0, done = false, pageLoaded = false;
+
+    function draw(now) {
+        const dt = Math.min((now - last) / 1000, 0.05);
+        last = now;
+        extra *= Math.pow(0.04, dt); // pointer speed fades back to the idle spin
+        frame = (frame + (BASE_FPS + extra) * dt + FRAMES) % FRAMES;
+        const i = Math.floor(frame);
+        logo.style.backgroundPosition = `${(i % 10) * 100 / 9}% ${Math.floor(i / 10) * 100 / 5}%`;
+
+        const images = Array.from(document.images);
+        const ready = images.filter(img => img.complete).length / (images.length || 1);
+        const elapsed = Math.min((now - start) / MIN_MS, 1);
+        const progress = pageLoaded ? elapsed : Math.min(ready, elapsed) * 0.9;
+        chunks.forEach((c, n) => c.classList.toggle('on', n < Math.round(progress * chunks.length)));
+
+        if (now - start >= MAX_MS || (pageLoaded && now - start >= MIN_MS)) { finish(); return; }
+        raf = requestAnimationFrame(draw);
+    }
+
+    function onMove(e) {
+        loader.style.setProperty('--gx', `${e.clientX}px`);
+        loader.style.setProperty('--gy', `${e.clientY}px`);
+        if (lastX !== null) extra = Math.max(-120, Math.min(120, extra + (e.clientX - lastX) * 0.8));
+        lastX = e.clientX;
+    }
+
+    function finish() {
+        if (done) return;
+        done = true;
+        cancelAnimationFrame(raf);
+        try { sessionStorage.setItem('sv-loaded', '1'); } catch (e) {}
+        ['pointermove'].forEach(n => loader.removeEventListener(n, onMove));
+        ['keydown', 'wheel', 'pointerdown'].forEach(n => window.removeEventListener(n, skip));
+
+        const target = document.querySelector('header a[aria-label*="Home"] img');
+        const from = logo.getBoundingClientRect();
+        const to = target && target.getBoundingClientRect();
+        loader.classList.add('is-out');
+        if (to && to.width) {
+            logo.animate([
+                { transform: 'none', opacity: 1, offset: 0 },
+                { opacity: 1, offset: 0.8 },
+                { transform: `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${to.width / from.width})`, opacity: 0 }
+            ], { duration: FLY_MS, easing: 'cubic-bezier(0.65, 0, 0.35, 1)', fill: 'forwards' });
+        }
+        setTimeout(() => { root.classList.remove('is-loading'); loader.remove(); }, FLY_MS);
+    }
+
+    function skip(e) {
+        if (e.type === 'keydown' && e.key === 'Tab') return;
+        finish();
+    }
+
+    if (document.readyState === 'complete') pageLoaded = true;
+    else window.addEventListener('load', () => { pageLoaded = true; }, { once: true });
+    loader.addEventListener('pointermove', onMove);
+    ['keydown', 'wheel', 'pointerdown'].forEach(n => window.addEventListener(n, skip, { passive: true }));
+    raf = requestAnimationFrame(draw);
+})();
+
 // Helper: Calculate exact smooth scroll target with dynamic sticky header and contents bar offset
 function smoothScrollToElement(targetEl, extraOffset = 16) {
     if (!targetEl) return;
