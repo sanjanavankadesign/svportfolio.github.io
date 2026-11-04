@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..700&family=Michroma&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="assets/images/logo-spin-sheet.webp">
     <script>try{if(!sessionStorage.getItem('sv-loaded')&&!location.hash&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('is-loading')}catch(e){}</script>
     
@@ -21,12 +21,12 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                        serif: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                        italicSerif: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                        display: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                        mono: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
-                        hand: ['"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        sans: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        serif: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        italicSerif: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        display: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        mono: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+                        hand: ['"Michroma"', '"Helvetica Now Pro Display"', '"Helvetica Now Display"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
                     },
                     colors: {
                         slate: { 50: '#F8F3F7', 100: '#E6E7F0', 200: '#CED0E0', 300: '#B0B2C9', 400: '#8C90AE', 500: '#6B6E92', 600: '#4F5276', 700: '#34365C', 800: '#1C1D3E', 900: '#0C0C24', 950: '#0B0609' },
@@ -77,7 +77,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=10.1">
+    <link rel="stylesheet" href="assets/css/styles.css?v=10.7">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -85,7 +85,6 @@
     <div id="loader" class="loader" aria-hidden="true">
         <div class="loader__logo"></div>
         <div class="loader__bar"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <p class="loader__hint">Move to spin &middot; any key to skip</p>
     </div>
 
     <!-- Navigation Header -->
@@ -423,37 +422,77 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 lg:py-32 px-6 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <div class="lg:col-span-5 relative">
-                <!-- Photo Frame -->
-                <div class="bg-white dark:bg-slate-900 p-3.5 rounded-2xl border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark">
-                    <div class="aspect-[16/10] rounded-xl bg-slate-900 overflow-hidden border-2 border-slate-900 relative group">
-                        <img src="assets/images/sanjana-workshop.jpg" alt="Sanjana Vanka Leading Design Presentation" class="w-full h-full object-cover object-left group-hover:scale-105 transition-transform duration-500">
+    <section id="about" class="console bg-void">
+        <svg class="console__lines" viewBox="0 0 1440 800" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M-20 640 C320 440 620 780 1460 340" />
+            <path d="M-20 720 C360 560 700 820 1460 460" />
+        </svg>
+
+        <div class="grid console__grid">
+            <!-- Capabilities menu -->
+            <div class="console__panel console__panel--menu">
+                <div class="console__panel-in">
+                    <div class="console__head">
+                        <h3 class="console__label">Capabilities</h3>
+                        <span id="console-count" class="console__count">01 / 04</span>
+                    </div>
+                    <div class="console__rows">
+                        <button type="button" class="console__row is-on" aria-pressed="true">
+                            <img src="assets/images/figma-icon.png" alt="" class="console__row-logo">
+                            <span>Figma</span>
+                            <span class="material-symbols-outlined console__chevron" aria-hidden="true">chevron_right</span>
+                        </button>
+                        <button type="button" class="console__row" aria-pressed="false">
+                            <span class="material-symbols-outlined console__row-icon" aria-hidden="true">groups</span>
+                            <span>User Research</span>
+                            <span class="material-symbols-outlined console__chevron" aria-hidden="true">chevron_right</span>
+                        </button>
+                        <button type="button" class="console__row" aria-pressed="false">
+                            <span class="material-symbols-outlined console__row-icon" aria-hidden="true">account_tree</span>
+                            <span>Wireframing &amp; IA</span>
+                            <span class="material-symbols-outlined console__chevron" aria-hidden="true">chevron_right</span>
+                        </button>
+                        <button type="button" class="console__row" aria-pressed="false">
+                            <span class="material-symbols-outlined console__row-icon" aria-hidden="true">touch_app</span>
+                            <span>Prototyping</span>
+                            <span class="material-symbols-outlined console__chevron" aria-hidden="true">chevron_right</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-7">
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                    Making complex systems clear and human.
-                </h2>
-                
-                <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-6 font-normal">
-                    I'm a Product Designer who loves turning complex problems into intuitive, human experiences. I focus on interaction design, visual clarity, and thoughtful details.
-                </p>
-
-                <!-- Core Toolset Badges -->
-                <div class="space-y-4 mb-8">
-                    <h4 class="font-display font-bold text-slate-900 dark:text-white text-sm uppercase tracking-wider">Capabilities</h4>
-                    <div class="flex flex-wrap gap-2.5">
-                        <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-900 text-slate-900 dark:text-white font-display font-bold text-xs shadow-brutal"><img src="assets/images/figma-icon.png" alt="Figma" class="w-4 h-4 rounded-sm object-contain shrink-0"> Figma</span>
-                        <span class="px-4 py-2 rounded-xl bg-stickypink text-slate-950 border-2 border-slate-900 font-display font-bold text-xs shadow-brutal">User Research</span>
-                        <span class="px-4 py-2 rounded-xl bg-stickyyellow text-slate-950 border-2 border-slate-900 font-display font-bold text-xs shadow-brutal">Wireframing & IA</span>
-                        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-900 text-slate-900 dark:text-white font-display font-bold text-xs shadow-brutal">Prototyping</span>
+            <!-- Photo lens -->
+            <div class="console__panel console__panel--lens">
+                <div class="console__panel-in console__lens-wrap">
+                    <div class="console__lens">
+                        <svg id="console-ring" class="console__ring" viewBox="0 0 400 400" aria-hidden="true">
+                            <circle cx="200" cy="200" r="196" class="console__ring-outer" />
+                            <circle cx="200" cy="200" r="182" class="console__ring-ticks" />
+                            <path d="M200 4 A196 196 0 0 1 396 200" class="console__ring-arc" />
+                        </svg>
+                        <img src="assets/images/sanjana-workshop.jpg" alt="Sanjana Vanka leading a design presentation" class="console__photo" loading="lazy">
                     </div>
                 </div>
+            </div>
+
+            <!-- Headline and description -->
+            <div class="console__panel console__panel--info">
+                <div class="console__panel-in console__info">
+                    <h2 class="console__title">Making complex systems clear and human.</h2>
+                    <p class="console__text">I'm a Product Designer who loves turning complex problems into intuitive, human experiences. I focus on interaction design, visual clarity, and thoughtful details.</p>
+                </div>
+            </div>
+
+            <!-- Section links -->
+            <div class="console__nav">
+                <a href="#work" class="console__prompt">
+                    <span class="console__prompt-btn"><span class="material-symbols-outlined" aria-hidden="true">folder</span></span>
+                    <span>Work</span>
+                </a>
+                <a href="#contact" class="console__prompt">
+                    <span>Contact</span>
+                    <span class="console__prompt-btn"><span class="material-symbols-outlined" aria-hidden="true">mail</span></span>
+                </a>
             </div>
         </div>
     </section>
@@ -540,7 +579,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=6.7"></script>
+    <script src="assets/js/main.js?v=6.8"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>

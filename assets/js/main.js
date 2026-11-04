@@ -817,3 +817,21 @@ window.lucide = {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     targets.forEach((el) => observer.observe(el));
 })();
+
+// About console: pick a capability, the row lights up and the lens ring turns
+(function initConsole() {
+    const rows = Array.from(document.querySelectorAll('.console__row'));
+    const ring = document.getElementById('console-ring');
+    const count = document.getElementById('console-count');
+    if (!rows.length || !ring || !count) return;
+    rows.forEach((row, i) => {
+        row.addEventListener('click', () => {
+            rows.forEach((r, n) => {
+                r.classList.toggle('is-on', n === i);
+                r.setAttribute('aria-pressed', String(n === i));
+            });
+            count.textContent = `0${i + 1} / 0${rows.length}`;
+            ring.style.transform = `rotate(${i * 90}deg)`;
+        });
+    });
+})();
