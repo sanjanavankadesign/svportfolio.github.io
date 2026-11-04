@@ -77,7 +77,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=10.7">
+    <link rel="stylesheet" href="assets/css/styles.css?v=10.10">
 </head>
 <body class="bg-cream dark:bg-darkBg text-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 antialiased selection:bg-stickypink selection:text-white">
 
@@ -203,28 +203,57 @@
 
     <!-- Featured Case Studies Showcase -->
     <section id="work" class="py-24 lg:py-32 px-6 max-w-6xl mx-auto">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 border-b-2 border-slate-900 dark:border-slate-700 pb-8">
-            <div>
-                <span class="font-hand text-2xl text-stickypink font-bold tracking-wide block">Selected Work</span>
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mt-1">Featured Projects</h2>
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 font-medium text-sm max-w-md">
-                Deep dives into research, systems, and product decisions.
-            </p>
-        </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- Project player: labels stay plain links, so without JS they jump to the cards below -->
+        <div id="player" class="player">
+            <div class="player__screen">
+                <svg class="player__lines" viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M-10 320 C200 190 360 390 810 120" />
+                    <path d="M-10 360 C240 250 420 420 810 180" />
+                </svg>
+                <div class="player__head">
+                    <span class="player__eyebrow">Selected Work</span>
+                    <h2 class="player__title">Featured Projects</h2>
+                    <p class="player__sub">Deep dives into research, systems, and product decisions.</p>
+                </div>
+                <nav class="player__labels" aria-label="Featured projects">
+                    <a href="#project-1" class="player__label is-on" aria-current="true"><small>01</small>Leoforce Connect</a>
+                    <a href="#project-2" class="player__label"><small>02</small>PATH</a>
+                    <a href="#project-3" class="player__label"><small>03</small>Food Adulteration</a>
+                    <a href="#project-4" class="player__label"><small>04</small>Layr Labs</a>
+                </nav>
+                <div class="player__status" aria-live="polite">
+                    <span id="player-count" class="player__count">01 / 04</span>
+                    <span id="player-track" class="player__track">Simplifying hiring communication for recruiters</span>
+                </div>
+            </div>
+            <div class="player__controls">
+                <div class="player__leds">
+                    <button type="button" class="player__led is-on" aria-label="Show project 1">1</button>
+                    <button type="button" class="player__led" aria-label="Show project 2">2</button>
+                    <button type="button" class="player__led" aria-label="Show project 3">3</button>
+                    <button type="button" class="player__led" aria-label="Show project 4">4</button>
+                </div>
+                <div class="player__dial">
+                    <button type="button" id="player-prev" class="player__arrow" aria-label="Previous project"><svg width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><path d="M15 2 28 18H2Z" /></svg></button>
+                    <a id="player-open" class="player__open" href="case-studies/case-study-1.html" aria-label="Open selected project">Open</a>
+                    <button type="button" id="player-next" class="player__arrow" aria-label="Next project"><svg width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><path d="M15 18 28 2H2Z" /></svg></button>
+                </div>
+            </div>
+        </div>
+        <script>document.getElementById('work').classList.add('js-player')</script>
+
+        <div class="player-cards grid grid-cols-1 lg:grid-cols-2 gap-10">
             
             <!-- Case Study 01 Card -->
-            <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-1.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-1.html';}" role="link" tabindex="0" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
+            <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-1.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-1.html';}" role="link" tabindex="0" id="project-1" data-href="case-studies/case-study-1.html" class="player-card is-active group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
                 
                 <!-- Sticky Badge Decorator -->
                 <div class="absolute top-4 right-4 z-10 bg-stickypink text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     Case Study 01
                 </div>
 
-                <div class="relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
+                <div class="player-card__media relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
                     <img src="assets/images/connect-laptop-mockup.png?v=3" alt="Leoforce Connect 2.0 Dashboard Interface on MacBook Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                 </div>
 
@@ -260,14 +289,14 @@
             </article>
 
             <!-- Case Study 02 Card — PATH -->
-            <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-2.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-2.html';}" role="link" tabindex="0" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
+            <article onclick="handleCaseStudyCardClick(event, 'case-studies/case-study-2.html')" onkeydown="if((event.key==='Enter'||event.key===' ')&&!event.target.closest('a, button')){event.preventDefault(); window.location.href='case-studies/case-study-2.html';}" role="link" tabindex="0" id="project-2" data-href="case-studies/case-study-2.html" class="player-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
                 
                 <!-- Sticky Badge Decorator -->
                 <div class="absolute top-4 right-4 z-10 bg-stickyyellow text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     Case Study 02
                 </div>
 
-                <div class="relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
+                <div class="player-card__media relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
                     <img src="assets/images/path-laptop-mockup.png?v=2" alt="PATH Startup Ecosystem Platform on MacBook Pro" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                 </div>
 
@@ -297,13 +326,13 @@
             </article>
 
             <!-- Team Project Card: Food Adulteration (links out to Behance) -->
-            <a href="https://www.behance.net/gallery/240580489/System-Design-Food-Adulteration" target="_blank" rel="noopener noreferrer" aria-label="View the food adulteration project on Behance" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
+            <a href="https://www.behance.net/gallery/240580489/System-Design-Food-Adulteration" target="_blank" rel="noopener noreferrer" aria-label="View the food adulteration project on Behance" id="project-3" data-href="https://www.behance.net/gallery/240580489/System-Design-Food-Adulteration" class="player-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
 
                 <div class="absolute top-4 right-4 z-10 bg-stickyblue text-white font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     Team Project
                 </div>
 
-                <div class="relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
+                <div class="player-card__media relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
                     <img src="assets/images/food-adulteration-cover.png" alt="Giga map of stakeholders in India's food adulteration system" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
 
@@ -332,13 +361,13 @@
             </a>
 
             <!-- Current Work Card: Layr Labs (links out to Layr Labs) -->
-            <a href="https://www.layrlabs.in" target="_blank" rel="noopener noreferrer" aria-label="Visit Layr Labs" class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
+            <a href="https://www.layrlabs.in" target="_blank" rel="noopener noreferrer" aria-label="Visit Layr Labs" id="project-4" data-href="https://www.layrlabs.in" class="player-card group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border-2 border-slate-900 shadow-brutal-lg dark:shadow-brutal-dark hover:-translate-y-1 hover:border-stickypink hover:shadow-brutal-pink dark:hover:shadow-brutal-pink transition-all duration-300 flex flex-col relative cursor-pointer focus:outline-none focus:ring-4 focus:ring-stickypink">
 
                 <div class="absolute top-4 right-4 z-10 bg-stickyyellow text-slate-950 font-hand font-bold text-base px-3 py-1 rounded-md border-2 border-slate-900 shadow-brutal">
                     In Progress
                 </div>
 
-                <div class="relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
+                <div class="player-card__media relative aspect-[16/10] bg-slate-100 dark:bg-slate-950 border-b-2 border-slate-900 overflow-hidden">
                     <div class="w-full h-full bg-[#F8F3F7] flex items-center justify-center"><img src="assets/images/layr-logo.png" alt="LAYR Labs logo" loading="lazy" class="w-2/5 max-w-[220px] h-auto object-contain group-hover:scale-105 transition-transform duration-500"></div>
                 </div>
 
@@ -579,7 +608,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=6.8"></script>
+    <script src="assets/js/main.js?v=6.10"></script>
     <!-- Google Material Symbols Icons automatically rendered via web font -->
 </body>
 </html>

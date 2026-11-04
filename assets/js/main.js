@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Smooth In-Page Anchor Links (Desktop + Mobile + Sticky Bar + Buttons)
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href*="#"]');
-        if (!link) return;
+        if (!link || link.classList.contains('player__label')) return;
 
         // Skip resume PDF links
         const href = link.getAttribute('href');
@@ -301,6 +301,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             });
+
+            // Above the first section (e.g. on load), highlight the first entry
+            if (!activeContentsId) {
+                const first = Array.from(contentsLinks).find(l => (l.getAttribute('href') || '').startsWith('#'));
+                if (first) activeContentsId = first.getAttribute('href').slice(1);
+            }
 
             contentsLinks.forEach(link => {
                 const href = link.getAttribute('href');
@@ -834,4 +840,57 @@ window.lucide = {
             ring.style.transform = `rotate(${i * 90}deg)`;
         });
     });
+})();
+
+// Featured projects player: one project at a time, driven by the screen labels, number buttons and dial
+(function initPlayer() {
+    const player = document.getElementById('player');
+    const cards = Array.from(document.querySelectorAll('.player-card'));
+    if (!player || !cards.length) return;
+    const labels = Array.from(player.querySelectorAll('.player__label'));
+    const leds = Array.from(player.querySelectorAll('.player__led'));
+    const count = document.getElementById('player-count');
+    const track = document.getElementById('player-track');
+    const open = document.getElementById('player-open');
+    let current = 0;
+
+    function show(next) {
+        current = (next + cards.length) % cards.length;
+        cards.forEach((card, i) => {
+            card.classList.toggle('is-active', i === current);
+            if (i === current) {
+                card.style.setProperty('--reveal-delay', '0ms');
+                card.classList.add('is-visible');
+            }
+        });
+        labels.forEach((label, i) => {
+            label.classList.toggle('is-on', i === current);
+            if (i === current) label.setAttribute('aria-current', 'true');
+            else label.removeAttribute('aria-current');
+        });
+        leds.forEach((led, i) => led.classList.toggle('is-on', i === current));
+        const card = cards[current];
+        count.textContent = `0${current + 1} / 0${cards.length}`;
+        track.textContent = card.querySelector('h3').textContent.trim();
+        const href = card.dataset.href;
+        open.href = href;
+        if (/^https?:/.test(href)) {
+            open.target = '_blank';
+            open.rel = 'noopener noreferrer';
+        } else {
+            open.removeAttribute('target');
+            open.removeAttribute('rel');
+        }
+    }
+
+    labels.forEach((label, i) => label.addEventListener('click', (e) => { e.preventDefault(); show(i); }));
+    leds.forEach((led, i) => led.addEventListener('click', () => show(i)));
+    document.getElementById('player-prev').addEventListener('click', () => show(current - 1));
+    document.getElementById('player-next').addEventListener('click', () => show(current + 1));
+    player.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+    });
+    const linked = location.hash.match(/^#project-(\d)$/);
+    show(linked ? Number(linked[1]) - 1 : 0);
 })();
