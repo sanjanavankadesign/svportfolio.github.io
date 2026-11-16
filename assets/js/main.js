@@ -824,70 +824,62 @@ window.lucide = {
     targets.forEach((el) => observer.observe(el));
 })();
 
-// About console: pick a capability, the row lights up and the lens ring turns
-(function initConsole() {
-    const rows = Array.from(document.querySelectorAll('.console__row'));
-    const ring = document.getElementById('console-ring');
-    const count = document.getElementById('console-count');
-    if (!rows.length || !ring || !count) return;
-    rows.forEach((row, i) => {
-        row.addEventListener('click', () => {
-            rows.forEach((r, n) => {
-                r.classList.toggle('is-on', n === i);
-                r.setAttribute('aria-pressed', String(n === i));
-            });
-            count.textContent = `0${i + 1} / 0${rows.length}`;
-            ring.style.transform = `rotate(${i * 90}deg)`;
-        });
-    });
-})();
 
-// Featured projects player: one project at a time, driven by the screen labels, number buttons and dial
+// Featured projects player: navigation and the selected project share one screen
 (function initPlayer() {
     const player = document.getElementById('player');
     const cards = Array.from(document.querySelectorAll('.player-card'));
     if (!player || !cards.length) return;
     const labels = Array.from(player.querySelectorAll('.player__label'));
     const leds = Array.from(player.querySelectorAll('.player__led'));
-    const count = document.getElementById('player-count');
-    const track = document.getElementById('player-track');
-    const open = document.getElementById('player-open');
+    const $ = (id) => document.getElementById(id);
+    const links = [$('player-open'), $('player-media'), $('player-cta')];
     let current = 0;
 
     function show(next) {
         current = (next + cards.length) % cards.length;
-        cards.forEach((card, i) => {
-            card.classList.toggle('is-active', i === current);
-            if (i === current) {
-                card.style.setProperty('--reveal-delay', '0ms');
-                card.classList.add('is-visible');
-            }
-        });
+        const card = cards[current];
         labels.forEach((label, i) => {
             label.classList.toggle('is-on', i === current);
             if (i === current) label.setAttribute('aria-current', 'true');
             else label.removeAttribute('aria-current');
         });
         leds.forEach((led, i) => led.classList.toggle('is-on', i === current));
-        const card = cards[current];
-        count.textContent = `0${current + 1} / 0${cards.length}`;
-        track.textContent = card.querySelector('h3').textContent.trim();
+        $('player-count').textContent = `0${current + 1} / 0${cards.length}`;
+
+        // The cards stay in the page for no-JS and search; the screen borrows their content
+        const media = card.querySelector('.player-card__media');
+        $('player-media').replaceChildren(...Array.from(media.children).map((el) => el.cloneNode(true)));
+        $('player-badge').textContent = card.querySelector(':scope > .absolute').textContent.trim();
+        $('player-title').textContent = card.querySelector('h3').textContent.trim();
+        $('player-desc').textContent = card.querySelector('h3 + p').textContent.trim();
+        $('player-tags').replaceChildren(...Array.from(card.querySelectorAll('span.rounded-md')).map((el) => el.cloneNode(true)));
+        $('player-cta').firstElementChild.textContent = card.querySelector('.mt-8 > span').textContent.trim();
+
         const href = card.dataset.href;
-        open.href = href;
-        if (/^https?:/.test(href)) {
-            open.target = '_blank';
-            open.rel = 'noopener noreferrer';
-        } else {
-            open.removeAttribute('target');
-            open.removeAttribute('rel');
-        }
+        const external = /^https?:/.test(href);
+        links.forEach((link) => {
+            link.href = href;
+            if (external) {
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+            } else {
+                link.removeAttribute('target');
+                link.removeAttribute('rel');
+            }
+        });
+        const preview = player.querySelector('.player__preview');
+        preview.classList.remove('is-swapping');
+        void preview.offsetWidth;
+        preview.classList.add('is-swapping');
     }
 
     labels.forEach((label, i) => label.addEventListener('click', (e) => { e.preventDefault(); show(i); }));
     leds.forEach((led, i) => led.addEventListener('click', () => show(i)));
-    document.getElementById('player-prev').addEventListener('click', () => show(current - 1));
-    document.getElementById('player-next').addEventListener('click', () => show(current + 1));
+    $('player-prev').addEventListener('click', () => show(current - 1));
+    $('player-next').addEventListener('click', () => show(current + 1));
     player.addEventListener('keydown', (e) => {
+        if (e.target.closest('a[href^="http"], .player__cta')) return;
         if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
         if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
     });
